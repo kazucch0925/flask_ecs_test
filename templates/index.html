@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Flask</title>
+    <title>ToDo List</title>
 </head>
 <body>
-    <p>Hello from flask</p>
+    <h1>ToDo List</h1>
+    <ul>
+        {% for todo in todo_list %}
+            <li>{{ todo['task'] }} - {{ todo['created_at'] }}</li>
+            <a href="/delete/{{ todo['id'] }}">Delete</a>
+            <a href="/edit/{{ todo['id'] }}">Edit</a>
+        {% endfor %}
+    </ul>
+    <form action="/add" method="post">
+        <input type="text" name="task" placeholder="Enter task">
+        <button type="submit">Add Task</button>
+    </form>
 </body>
 </html>
