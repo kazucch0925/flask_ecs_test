@@ -9,25 +9,53 @@
 <body>
     <div class="content">
         <!-- ログインフォーム -->
-	<h1>ログイン</h1>
-	{% if message %}
-	    <p class="error-message">{{ message }}</p>
-	{% endif %}
-	<form action="/login" method="post">
-	    <div class="form-group">
+        <h1>ログイン</h1>
+        <div class="error-message" style="display: none; color: red;"></div>
+        <form id="loginForm">
+            <div class="form-group">
                 <!-- メールアドレスまたはユーザー名入力フィールド -->
                 <label for="identifier">メールアドレスまたはユーザー名:</label>
                 <input type="text" id="identifier" name="identifier" required>
-	    </div>
-	    <div class="form-group">
+            </div>
+            <div class="form-group">
                 <!-- パスワード入力フィールド -->
                 <label for="password">パスワード:</label>
                 <input type="password" id="password" name="password" required>
-	    </div>
+            </div>
             <!-- ログインボタン -->
             <button type="submit">ログイン</button>
         </form>
         <a href="{{ url_for('auth.register') }}">新規会員登録の方はこちら</a>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const identifierValue = document.getElementById('identifier').value;
+            const passwordValue = document.getElementById('password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ identifier: identifierValue, password: passwordValue })
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "/";
+                } else {
+                    return response.json().then(data => { throw new Error(data.message) });
+                }
+            })
+            .catch(error => {
+                const errorMessageElement = document.querySelector('.error-message');
+                if (errorMessageElement) {
+                    errorMessageElement.textContent = error.message;
+                    errorMessageElement.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
