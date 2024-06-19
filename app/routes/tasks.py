@@ -41,7 +41,7 @@ def delete_todo(id):
         if user_id is None:
             current_app.logger.error('Error: user_id not found in session. Session: %s', session)
             return redirect(url_for('auth.logout')) # user_idが見つからなかった場合はログアウト
-        todo = Todo.query.get(id)
+        todo = db.session.get(Todo, id)
         if todo and todo.user_id == user_id:
             db.session.delete(todo)
             db.session.commit()
@@ -60,7 +60,7 @@ def edit_todo(id):
         if user_id is None:
             current_app.logger.error('Error: user_id not found in session. Session: %s', session)
             return redirect(url_for('auth.logout')) # user_idが見つからなかった場合はログアウト
-        todo = Todo.query.get(id)
+        todo = db.session.get(Todo, id)
         if todo and todo.user_id == user_id:
             data = request.get_json() or {}
             task = data.get('task')
@@ -84,7 +84,7 @@ def get_todo_by_id(id):
         if user_id is None:
             current_app.logger.error('Error: user_id not found in session. Session: %s', session)
             return redirect(url_for('auth.logout'))
-        todo = Todo.query.get(id)
+        todo = db.session.get(Todo, id)
         if todo and todo.user_id == user_id:
             return render_template('edit.html', todo=todo)
         else:
