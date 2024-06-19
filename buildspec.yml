@@ -11,8 +11,9 @@ phases:
       python: 3.10
     commands:
       - echo "Installing system dependencies"
-      - pip install openapi-generator-cli
-      - pip install pytest
+      - pip install --user openapi-generator-cli
+      - pip install --user pytest
+      - export PATH=$PATH:/root/.local/bin
   pre_build:
     commands:
       - echo "Setting up openapi-generator-cli in PATH"
