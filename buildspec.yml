@@ -15,9 +15,8 @@ phases:
       - pip install pytest
   pre_build:
     commands:
-      - echo "Checking openapi-generator-cli installation path"
-      - which openapi-generator-cli
-      - ln -s $(which openapi-generator-cli) /usr/local/bin/openapi-generator-cli
+      - echo "Setting up openapi-generator-cli in PATH"
+      - export PATH=$PATH:/root/.local/bin
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com # ECRへログイン
       - echo Logging in to Docker Hub...
