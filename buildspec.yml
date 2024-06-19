@@ -6,22 +6,36 @@ env:
     DOCKERHUB_PASS: arn:aws:secretsmanager:$AWS_DEFAULT_REGION:$AWS_ACCOUNT_ID:secret:flask_ecs_test:password
 
 phases:
+  install:
+    runtime-versions:
+      python: 3.10
+    commands:
+      - echo "Installing system dependencies"
+      - pip install openapi-generator-cli
+      - pip install pytest
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 381491863936.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com # ECRへログイン
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com # ECRへログイン
       - echo Logging in to Docker Hub...
       - echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin # DockerHubへログイン
       - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
   build:
     commands:
-      - echo Build started on 'date'
+      - echo Build started on `date`
+      - echo Generating code from OpenAPI spec
+      - openapi-generator-cli generate -i openapi.yaml -g python -o ./generated
+      - echo Installing project dependencies
+      - pip install -r ./generated/requirements.txt
+      - pip install -r ./generated/test-requirements.txt
+      - echo Running tests
+      - pytest ./generated
       - echo Building the Docker image...
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG . # イメージの作成とタグ付け
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
   post_build:
     commands:
-      - echo Build completed on 'date'
+      - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # ECRへプッシュ
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG  > imagedefinitions.json
