@@ -29,6 +29,7 @@ phases:
       - echo Build started on `date`
       - echo Generating code from OpenAPI spec
       - export PATH=$PATH:/root/.local/bin
+      - which openapi-generator-cli
       - openapi-generator-cli generate -i openapi.yaml -g python -o ./generated
       - echo Installing project dependencies
       - pip install -r ./generated/requirements.txt
