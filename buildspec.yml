@@ -15,21 +15,25 @@ phases:
       - pip install --user openapi-generator-cli
       - pip install --user pytest
       - echo 'export PATH=$PATH:/root/.local/bin' >> ~/.bash_profile
+      - echo 'export PATH=$PATH:/root/.local/bin' >> ~/.bashrc
+      - export PATH=$PATH:/root/.local/bin
   pre_build:
     commands:
       - echo "Setting up openapi-generator-cli in PATH"
+      - source ~/.bash_profile || true
       - export PATH=$PATH:/root/.local/bin
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - echo Logging in to Docker Hub...
       - echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin
       - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - openapi-generator-cli version
   build:
     commands:
       - echo Build started on `date`
       - echo Generating code from OpenAPI spec
+      - source ~/.bash_profile || true
       - export PATH=$PATH:/root/.local/bin
-      - which openapi-generator-cli
       - openapi-generator-cli generate -i openapi.yaml -g python -o ./generated
       - echo Installing project dependencies
       - pip install -r ./generated/requirements.txt
