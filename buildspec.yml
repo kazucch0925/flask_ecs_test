@@ -14,8 +14,7 @@ phases:
       - echo "Installing system dependencies"
       - pip install --user openapi-generator-cli
       - pip install --user pytest
-      - echo 'export PATH=$PATH:/root/.local/bin' >> ~/.bashrc
-      - source ~/.bashrc
+      - echo 'export PATH=$PATH:/root/.local/bin' >> ~/.bash_profile
   pre_build:
     commands:
       - echo "Setting up openapi-generator-cli in PATH"
