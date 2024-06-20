@@ -9,10 +9,13 @@ phases:
   install:
     runtime-versions:
       python: 3.10
+      java: corretto11 # Javaをインストール
     commands:
       - echo "Installing system dependencies"
       - pip install --user openapi-generator-cli
       - pip install --user pytest
+      - echo 'export PATH=$PATH:/root/.local/bin' >> ~/.bashrc
+      - source ~/.bashrc
   pre_build:
     commands:
       - echo "Setting up openapi-generator-cli in PATH"
@@ -26,6 +29,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Generating code from OpenAPI spec
+      - export PATH=$PATH:/root/.local/bin
       - openapi-generator-cli generate -i openapi.yaml -g python -o ./generated
       - echo Installing project dependencies
       - pip install -r ./generated/requirements.txt
