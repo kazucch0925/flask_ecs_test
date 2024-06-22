@@ -48,7 +48,7 @@ phases:
       - echo Pushing the Docker image... # Dockerイメージのプッシュを示すメッセージを表示
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # Amazon ECRにDockerイメージをプッシュ
       - echo Uploading report.html to S3... # S3にreport.htmlをアップロードすることを示すメッセージを表示
-      - aws s3 cp report.html s3://$S3_BUCKET/$S3_PREFIX/report.html --sse AES256 # S3にreport.htmlをアップロード
+      - aws s3 cp report.html s3://$S3_BUCKET/$S3_PREFIX/report.html --sse AES256 --acl public-read # S3にreport.htmlをアップロードし、公開読み取り権限を付与
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG  > imagedefinitions.json # イメージ定義をJSONファイルに出力
 
 artifacts:
