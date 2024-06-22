@@ -14,6 +14,7 @@ phases:
       - echo "Installing system dependencies" # システムの依存関係をインストールすることを示すメッセージを表示
       - npm install -g @openapitools/openapi-generator-cli # OpenAPI Generator CLIをグローバルにインストール
       - pip install --user pytest pytest-html coverage # pytest, pytest-html, coverageをユーザーのホームディレクトリにインストール
+      - export PATH=$PATH:$HOME/.local/bin # ユーザーのローカルバイナリディレクトリをPATHに追加
       - export PATH=$PATH:$(npm bin -g) # グローバルにインストールされたnpmパッケージの実行パスをPATHに追加
 
   pre_build:
