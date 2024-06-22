@@ -50,4 +50,4 @@ artifacts:
   files:
     - imagedefinitions.json # 出力されたイメージ定義JSONファイルをアーティファクトとして保存
     - 'report.html' # 生成されたテストレポートをアーティファクトとして保存
-  discard-paths: no # パスを保持する
+  discard-paths: yes # パスを破棄してルートに保存
