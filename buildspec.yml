@@ -1,6 +1,9 @@
 version: 0.2
 
 env:
+  variables:
+    S3_BUCKET: "codepipeline-ap-northeast-1-940418762680"
+    S3_PREFIX: "flask_ecs_test/BuildArtif"
   secrets-manager:
     DOCKERHUB_USER: arn:aws:secretsmanager:$AWS_DEFAULT_REGION:$AWS_ACCOUNT_ID:secret:flask_ecs_test:username
     DOCKERHUB_PASS: arn:aws:secretsmanager:$AWS_DEFAULT_REGION:$AWS_ACCOUNT_ID:secret:flask_ecs_test:password
@@ -44,9 +47,9 @@ phases:
       - echo Build completed on `date` # ビルドの完了を示すメッセージを表示
       - echo Pushing the Docker image... # Dockerイメージのプッシュを示すメッセージを表示
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # Amazon ECRにDockerイメージをプッシュ
-      - echo Uploading report.html to S3 without encryption... # S3にreport.htmlを暗号化なしでアップロードすることを示すメッセージを表示
-      - aws s3 cp report.html s3://$S3_BUCKET/$S3_PREFIX/report.html --no-sign-request # S3にreport.htmlをアップロード
-      - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json # イメージ定義をJSONファイルに出力
+      - echo Uploading report.html to S3... # S3にreport.htmlをアップロードすることを示すメッセージを表示
+      - aws s3 cp report.html s3://$S3_BUCKET/$S3_PREFIX/report.html --sse AES256 # S3にreport.htmlをアップロード
+      - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG  > imagedefinitions.json # イメージ定義をJSONファイルに出力
 
 artifacts:
   files:
