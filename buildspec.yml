@@ -49,4 +49,4 @@ phases:
 artifacts:
   files:
     - imagedefinitions.json # 出力されたイメージ定義JSONファイルをアーティファクトとして保存
-    - report.html # 生成されたテストレポートをアーティファクトとして保存
+    - '**/*' # すべてのファイルをアーティファクトとして保存（report.htmlも含む）
