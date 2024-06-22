@@ -1,8 +1,10 @@
 version: 0.2
+
 env:
   secrets-manager:
     DOCKERHUB_USER: arn:aws:secretsmanager:$AWS_DEFAULT_REGION:$AWS_ACCOUNT_ID:secret:flask_ecs_test:username
     DOCKERHUB_PASS: arn:aws:secretsmanager:$AWS_DEFAULT_REGION:$AWS_ACCOUNT_ID:secret:flask_ecs_test:password
+
 phases:
   install:
     runtime-versions:
@@ -11,8 +13,9 @@ phases:
     commands:
       - echo "Installing system dependencies" # システムの依存関係をインストールすることを示すメッセージを表示
       - npm install -g @openapitools/openapi-generator-cli # OpenAPI Generator CLIをグローバルにインストール
-      - pip install --user pytest pytest-html # pytestとpytest-htmlをユーザーのホームディレクトリにインストール
+      - pip install --user pytest pytest-html coverage # pytest, pytest-html, coverageをユーザーのホームディレクトリにインストール
       - export PATH=$PATH:$(npm bin -g) # グローバルにインストールされたnpmパッケージの実行パスをPATHに追加
+
   pre_build:
     commands:
       - echo "Setting up openapi-generator-cli in PATH" # OpenAPI Generator CLIのパス設定を示すメッセージを表示
@@ -23,6 +26,7 @@ phases:
       - echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin # Docker Hubにログイン
       - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION # コードのバージョンをIMAGE_TAGに設定
       - openapi-generator-cli version # OpenAPI Generator CLIのバージョンを確認
+
   build:
     commands:
       - echo Build started on `date` # ビルドの開始を示すメッセージを表示
@@ -33,17 +37,22 @@ phases:
       - pip install -r ./generated/requirements.txt # 生成されたコードの依存関係をインストール
       - pip install -r ./generated/test-requirements.txt # テストに必要な依存関係をインストール
       - echo Running tests # テストの実行を示すメッセージを表示
-      - pytest ./generated --html=report.html --self-contained-html # 生成されたコードのテストを実行し、HTML形式のレポートを生成
+      - coverage run -m pytest ./generated --html=report.html --self-contained-html # カバレッジを計測しつつテストを実行し、HTML形式のレポートを生成
+      - coverage html -d coverage_html_report # カバレッジレポートをHTML形式で出力
       - echo Building the Docker image... # Dockerイメージのビルドを示すメッセージを表示
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG . # Dockerイメージをビルド
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # イメージにタグを付ける
+
   post_build:
     commands:
       - echo Build completed on `date` # ビルドの完了を示すメッセージを表示
       - echo Pushing the Docker image... # Dockerイメージのプッシュを示すメッセージを表示
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # Amazon ECRにDockerイメージをプッシュ
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json # イメージ定義をJSONファイルに出力
+
 artifacts:
   files:
     - imagedefinitions.json # 出力されたイメージ定義JSONファイルをアーティファクトとして保存
-    - '**/*' # すべてのファイルをアーティファクトとして保存（report.htmlも含む
+    - report.html # テストレポートをアーティファクトとして保存
+    - coverage_html_report/** # カバレッジレポートのHTMLファイルをアーティファクトとして保存
+  discard-paths: yes # パスを破棄してルートに保存
