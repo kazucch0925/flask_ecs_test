@@ -16,7 +16,7 @@ phases:
     commands:
       - echo "Installing system dependencies" # システムの依存関係をインストールすることを示すメッセージを表示
       - npm install -g @openapitools/openapi-generator-cli # OpenAPI Generator CLIをグローバルにインストール
-      - pip install --user pytest pytest-html # pytestとpytest-htmlをユーザーのホームディレクトリにインストール
+      - pip install --user pytest # pytestをユーザーのホームディレクトリにインストール
       - export PATH=$PATH:$(npm bin -g) # グローバルにインストールされたnpmパッケージの実行パスをPATHに追加
   
   pre_build:
@@ -39,7 +39,7 @@ phases:
       - pip install -r ./generated/requirements.txt # 生成されたコードの依存関係をインストール
       - pip install -r ./generated/test-requirements.txt # テストに必要な依存関係をインストール
       - echo Running tests # テストの実行を示すメッセージを表示
-      - pytest ./generated --html=report.html --self-contained-html # 生成されたコードのテストを実行し、HTML形式のレポートを生成
+      - pytest ./generated # 生成されたコードのテストを実行
       - echo Building the Docker image... # Dockerイメージのビルドを示すメッセージを表示
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG . # Dockerイメージをビルド
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # イメージにタグを付ける
@@ -49,13 +49,9 @@ phases:
       - echo Build completed on `date` # ビルドの完了を示すメッセージを表示
       - echo Pushing the Docker image... # Dockerイメージのプッシュを示すメッセージを表示
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # Amazon ECRにDockerイメージをプッシュ
-      - echo Uploading report.html to S3... # S3にreport.htmlをアップロードすることを示すメッセージを表示
-      - aws s3 cp report.html s3://$S3_BUCKET/$S3_PREFIX/report.html --sse AES256 --acl public-read # S3にreport.htmlをアップロードし、公開読み取り権限を付与
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG  > imagedefinitions.json # イメージ定義をJSONファイルに出力
 
 artifacts:
   files:
     - imagedefinitions.json # 出力されたイメージ定義JSONファイルをアーティファクトとして保存
-    - 'report.html' # 生成されたテストレポートをアーティファクトとして保存
-  base-directory: './generated' # 基本ディレクトリを指定
   discard-paths: yes # パスを破棄してルートに保存
