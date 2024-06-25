@@ -9,7 +9,7 @@ phases:
   install:
     runtime-versions:
       python: 3.10
-      java: corretto11 # Javaをインストール
+      java: corretto11 # Javaインストール
     commands:
       - echo "Installing system dependencies" # システムの依存関係をインストールすることを示すメッセージを表示
       - npm install -g @openapitools/openapi-generator-cli # OpenAPI Generator CLIをグローバルにインストール
