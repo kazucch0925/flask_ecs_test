@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, session, current_app, render_template
-from datetime import datetime
+from datetime import datetime, date
 import pytz
 from app.models import Todo
 from app import db
@@ -19,7 +19,7 @@ def get_todo_response(todo):
         "task": todo.task,
         "created_at": created_at_tokyo.isoformat(),
         "priority": todo.priority,
-        "due_date": todo.due_date,
+        "due_date": todo.due_date.isoformat() if todo.due_date else None,
         "tags": todo.tags
     }
 
@@ -32,11 +32,19 @@ def add_todo():
         current_app.logger.error('Error: user_id not found in session. Session: %s', session)
         return jsonify({"message": "user_id not found in session"}), 401
 
-    data = request.get_json() or {}
+    try:
+        data = request.get_json() or {}
+        current_app.logger.debug(f'Received data: {data}')
+    except Exception as e:
+        current_app.logger.error('Failed to parse JSON. Error: %s', str(e))
+        return jsonify({"message": "Invalid JSON format"}), 400
+
     task = data.get('task')
     priority = data.get('priority', 1)
     due_date = data.get('due_date')
     tags = data.get('tags')
+
+    current_app.logger.debug(f'Task: {task}, Priority: {priority}, Due date: {due_date}, Tags: {tags}')
 
     if not task:
         current_app.logger.warning('Failed to add task. Task was empty. Session: %s', session)
@@ -45,11 +53,18 @@ def add_todo():
     tokyo_tz = pytz.timezone('Asia/Tokyo')
     now = datetime.now(tokyo_tz)
 
-    new_todo = Todo(task=task, created_at=now, user_id=user_id, priority=priority, due_date=due_date, tags=tags)
-    db.session.add(new_todo)
-    db.session.commit()
-    current_app.logger.info('Task added at Tokyo time: %s. Session: %s', now.isoformat(), session)
-    return jsonify(get_todo_response(new_todo)), 201
+    try:
+        if due_date:
+            due_date = datetime.strptime(due_date, '%Y-%m-%d').date()
+        new_todo = Todo(task=task, created_at=now, user_id=user_id, priority=priority, due_date=due_date, tags=tags)
+        db.session.add(new_todo)
+        db.session.commit()
+        current_app.logger.info('Task added at Tokyo time: %s. Session: %s', now.isoformat(), session)
+        return jsonify(get_todo_response(new_todo)), 201
+    except Exception as e:
+        current_app.logger.error('Failed to add task. Error: %s', str(e))
+        db.session.rollback()
+        return jsonify({"message": "タスクの追加に失敗しました"}), 500
 
 # タスクの検索ルート
 @tasks_bp.route('/todos', methods=['GET'])

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ToDoリスト</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body>
     <div class="navbar">
@@ -14,17 +14,35 @@
     <div class="content">
         <h1>ToDoリスト</h1>
         <div class="error-message" style="display: none; color: red;"></div>
-        <form id="addForm" class="task-form" action="javascript:void(0);" method="POST">
-            <input type="text" id="task" name="task" placeholder="タスクを入力" required>
-            <input type="number" id="priority" name="priority" placeholder="優先度 (1-3)" min="1" max="3">
-            <input type="date" id="due_date" name="due_date" placeholder="期限">
-            <input type="text" id="tags" name="tags" placeholder="タグ (カンマ区切り)">
-            <button type="submit">追加</button>
-        </form>
-        <form id="searchForm" class="task-form" action="javascript:void(0);" method="GET">
-            <input type="text" id="search" name="search" placeholder="タスクを検索">
-            <button type="submit">検索</button>
-        </form>
+        
+        <div class="form-section">
+            <h2>タスクの追加</h2>
+            <form id="addForm" class="task-form" action="javascript:void(0);" method="POST">
+                <label for="task">タスク</label>
+                <input type="text" id="task" name="task" placeholder="タスクを入力" required>
+                
+                <label for="priority">優先度</label>
+                <input type="number" id="priority" name="priority" placeholder="優先度 (1-3)" min="1" max="3">
+                
+                <label for="due_date">期限</label>
+                <input type="date" id="due_date" name="due_date" placeholder="yyyy/mm/dd">
+                
+                <label for="tags">タグ</label>
+                <input type="text" id="tags" name="tags" placeholder="タグ (カンマ区切り)">
+                
+                <button type="submit">追加</button>
+            </form>
+        </div>
+
+        <div class="form-section">
+            <h2>タスクの検索</h2>
+            <form id="searchForm" class="task-form" action="javascript:void(0);" method="GET">
+                <label for="search">タスクの検索</label>
+                <input type="text" id="search" name="search" placeholder="タスクを検索">
+                <button type="submit">検索</button>
+            </form>
+        </div>
+        
         <ul class="todo-list" id="todoList">
             <!-- タスクリストはJavaScriptで動的に更新 -->
         </ul>
@@ -107,9 +125,9 @@
                 if (response.ok) {
                     return response.json();
                 } else {
-                    console.log('Response not OK. Status:', response.status); // レスポンスのステータスコードをログに出力
+                    console.log('Response not OK. Status:', response.status);
                     return response.text().then(text => {
-                        console.log('Response text:', text); // レスポンスのテキストをログに出力
+                        console.log('Response text:', text);
                         throw new Error('Failed to fetch todos');
                     });
                 }
@@ -119,8 +137,6 @@
                 todoListElement.innerHTML = '';
                 data.forEach(todo => {
                     const listItem = document.createElement('li');
-		    
-		    // ISO 8601形式の日時を日本時間に変換
                     const date = new Date(todo.created_at);
                     const formattedDate = new Intl.DateTimeFormat('ja-JP', {
                         year: 'numeric',
@@ -132,7 +148,7 @@
                         timeZone: 'Asia/Tokyo'
                     }).format(date);
 
-                    listItem.textContent = `${todo.task} - ${formattedDate} - 優先度: ${todo.priority} - 期限: ${todo.due_date || 'なし'} - タグ: ${todo.tags || 'なし'}`;
+                    listItem.textContent = `${todo.task} - ${formattedDate} - 優先度: ${todo.priority || 'なし'} - 期限: ${todo.due_date ? new Date(todo.due_date).toLocaleDateString('ja-JP') : 'なし'} - タグ: ${todo.tags || 'なし'}`;
                     const deleteLink = document.createElement('a');
                     deleteLink.href = '#';
                     deleteLink.textContent = '削除';
@@ -149,7 +165,7 @@
                 });
             })
             .catch(error => {
-                console.error('Error fetching todos:', error);  // エラーをコンソールに出力
+                console.error('Error fetching todos:', error);
                 const errorMessageElement = document.querySelector('.error-message');
                 if (errorMessageElement) {
                     errorMessageElement.textContent = `タスクリストの取得に失敗しました: ${error.message}`;

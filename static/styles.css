@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f9f9f9; /* Light background for the page */
 }
 
 .navbar {
@@ -24,32 +25,77 @@ body {
 }
 
 .content {
-    margin-top: 40px; /* adjust based on the navbar height */
+    margin-top: 80px; /* adjust based on the navbar height */
     padding: 20px;
+    max-width: 600px; /* Add maximum width for content area */
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better visual separation */
+    background-color: #fff; /* Set background color to white */
+    border-radius: 8px; /* Add rounded corners */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.form-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fafafa;
 }
 
 .task-form {
-	margin-bottom: 20px;
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
-.task-form input[type="text"] {
-	padding: 5px;
-	margin-right: 10px;
-	width: 100%;
-	max-width: 400px;
-	box-sizing: border-box;
+.task-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.task-form input[type="text"],
+.task-form input[type="number"],
+.task-form input[type="date"],
+.task-form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.task-form input[type="number"],
+.task-form input[type="date"] {
+    max-width: 200px; /* Limit width of priority and due date inputs */
 }
 
 .task-form button {
-	padding: 10px;
-	background-color: #4CAF50;
-	color: white;
-	border: none;
-	cursor: pointer;
-	max-width: 150px;
-	font-size: 16px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    margin-top: 10px; /* Add space above button */
+}
+
+.task-form button:hover {
+    background-color: #45a049;
 }
 
 .todo-list li {
@@ -68,45 +114,54 @@ body {
 }
 
 form {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px; /* Centralize form */
 }
 
 form .form-group {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 form label {
-	margin-bottom: 5px;
-	display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 form input[type="text"],
 form input[type="email"],
 form input[type="password"] {
-	padding: 8px;
-	margin-bottom: 10px;
-	width: 100%;
-	max-width: 400px;
-	box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 form button {
-	padding: 10px;
-	background-color: #4CAF50;
-	color: white;
-	border: none;
-	cursor: pointer;
-	max-width: 150px;
-	font-size: 16px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    max-width: 150px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    margin-top: 10px; /* Add space above button */
+}
+
+form button:hover {
+    background-color: #45a049;
 }
 
 .error-message {
-	display: none;
-	color: red;
-	font-weight: bold;
-	margin-bottom: 10px;
-	border: 1px solid red;
-	padding: 10px;
-	background-color: #fdd;
+    display: none;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: 1px solid red;
+    padding: 10px;
+    background-color: #fdd;
 }
