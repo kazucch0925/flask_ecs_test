@@ -1,5 +1,5 @@
 import logging
-from flask import Flask
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -10,7 +10,14 @@ def create_app():
     app.secret_key = 'your_secret_key_here' # セッション用の秘密鍵を設定
 
     # ログの設定
-    logging.basicConfig(filename='app.log', level=logging.DEBUG)
+    logging.basicConfig(filename='app.log', level=logging.DEBUG,
+                        format='%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')
+
+    # コンソールにもログを出力する設定
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.DEBUG)
+    console_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+    app.logger.addHandler(console_handler)
 
     # データベースの初期化
     db.init_app(app)
@@ -25,5 +32,18 @@ def create_app():
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(tasks_bp)
+
+    # エラーハンドリング
+    @app.errorhandler(500)
+    def internal_server_error(error):
+        app.logger.error(f'Server Error: {error}, route: {request.url}')
+        return jsonify({"message": "Internal server error"}), 500
+
+    @app.errorhandler(Exception)
+    def unhandled_exception(e):
+        import traceback
+        tb_str = ''.join(traceback.format_tb(e.__traceback__))
+        app.logger.error(f'Unhandled Exception: {e}, route: {request.url}, traceback: {tb_str}')
+        return jsonify({"message": "Unhandled exception occurred", "error": str(e)}), 500
 
     return app

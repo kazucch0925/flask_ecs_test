@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,25 +7,23 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="content">
-        <!-- ログインフォーム -->
+    <div class="login-container">
         <h1>ログイン</h1>
         <div class="error-message" style="display: none; color: red;"></div>
         <form id="loginForm">
             <div class="form-group">
-                <!-- メールアドレスまたはユーザー名入力フィールド -->
                 <label for="identifier">メールアドレスまたはユーザー名:</label>
                 <input type="text" id="identifier" name="identifier" required>
             </div>
             <div class="form-group">
-                <!-- パスワード入力フィールド -->
                 <label for="password">パスワード:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <!-- ログインボタン -->
-            <button type="submit">ログイン</button>
+            <div class="form-group">
+                <button type="submit">ログイン</button>
+            </div>
         </form>
-        <a href="{{ url_for('auth.register') }}">新規会員登録の方はこちら</a>
+        <p><a href="{{ url_for('auth.register') }}">新規会員登録の方はこちら</a></p>
     </div>
 
     <script>
