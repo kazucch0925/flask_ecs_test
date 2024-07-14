@@ -1,5 +1,5 @@
 import logging
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -12,7 +12,7 @@ def create_app():
     # ログの設定
     logging.basicConfig(filename='app.log', level=logging.DEBUG,
                         format='%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')
-    
+
     # コンソールにもログを出力する設定
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.DEBUG)
