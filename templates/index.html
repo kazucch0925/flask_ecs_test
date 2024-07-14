@@ -22,7 +22,21 @@
                 <button onclick="fetchTodos(document.getElementById('search').value)">検索</button>
             </div>
         </div>
-        <ul id="todoList" class="todo-list"></ul>
+        <table class="todo-table">
+            <thead>
+                <tr>
+                    <th>タスク</th>
+                    <th>作成日</th>
+                    <th>優先度</th>
+                    <th>期限</th>
+                    <th>タグ</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="todoList">
+                <!-- タスクデータはここに挿入されます -->
+            </tbody>
+        </table>
     </div>
 
     <!-- タスク追加モーダル -->

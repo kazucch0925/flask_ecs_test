@@ -60,7 +60,7 @@ function fetchTodos(search = '') {
             todoListElement.innerHTML = '';
             data.forEach(todo => {
                 console.log(todo); // デバッグ用
-                const listItem = document.createElement('li');
+                const row = document.createElement('tr');
                 const date = new Date(todo.created_at);
                 const formattedDate = new Intl.DateTimeFormat('ja-JP', {
                     year: 'numeric',
@@ -72,23 +72,18 @@ function fetchTodos(search = '') {
                     timeZone: 'Asia/Tokyo'
                 }).format(date);
 
-                listItem.textContent = `${todo.task} - ${formattedDate} - 優先度: ${todo.priority !== undefined ? todo.priority : 'なし'} - 期限: ${todo.due_date ? new Date(todo.due_date).toLocaleDateString('ja-JP') : 'なし'} - タグ: ${todo.tags !== undefined ? todo.tags : 'なし'}`;
-
-                const deleteLink = document.createElement('a');
-                deleteLink.href = `#`;
-                deleteLink.textContent = '削除';
-                deleteLink.onclick = function(event) {
-                    event.preventDefault();
-                    deleteTask(todo.id);
-                };
-                listItem.appendChild(deleteLink);
-
-                const editLink = document.createElement('a');
-                editLink.href = `/todos/${todo.id}`;
-                editLink.textContent = '編集';
-                listItem.appendChild(editLink);
-
-                todoListElement.appendChild(listItem);
+                row.innerHTML = `
+                    <td>${todo.task}</td>
+                    <td>${formattedDate}</td>
+                    <td>${todo.priority !== undefined ? todo.priority : 'なし'}</td>
+                    <td>${todo.due_date ? new Date(todo.due_date).toLocaleDateString('ja-JP') : 'なし'}</td>
+                    <td>${todo.tags !== undefined ? todo.tags : 'なし'}</td>
+                    <td class="actions">
+                        <a href="#" onclick="deleteTask(${todo.id})">削除</a>
+                        <a href="/todos/${todo.id}">編集</a>
+                    </td>
+                `;
+                todoListElement.appendChild(row);
             });
         })
         .catch(error => {

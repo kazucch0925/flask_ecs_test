@@ -5,7 +5,7 @@ body {
 }
 
 .navbar {
-    background-color: #333;
+    background-color: #2c3e50;
     color: white;
     padding: 10px;
     display: flex;
@@ -23,7 +23,7 @@ body {
 }
 
 .nav-buttons button, .nav-buttons a {
-    background-color: #4CAF50;
+    background-color: #3498db;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -33,7 +33,7 @@ body {
 }
 
 .nav-buttons a {
-    background-color: #f44336; /* ログアウトボタンのスタイルを赤に */
+    background-color: #e74c3c; /* ログアウトボタンのスタイルを赤に */
 }
 
 .nav-buttons button:hover, .nav-buttons a:hover {
@@ -69,7 +69,7 @@ body {
 }
 
 .form-group button {
-    background-color: #4CAF50;
+    background-color: #3498db;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -81,22 +81,73 @@ body {
     opacity: 0.8;
 }
 
-.search-group {
+/* 検索ボックスのスタイルを調整 */
+.search-group input {
+    width: calc(100% - 100px);
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+}
+
+.search-group button {
+    width: 80px;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-group button:hover {
+    opacity: 0.8;
+}
+
+.todo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.todo-table th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+.todo-table td {
+    padding: 10px;
+}
+
+.todo-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.todo-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.todo-table .actions {
     display: flex;
     gap: 10px;
 }
 
-.todo-list {
-    list-style: none;
-    padding: 0;
+.todo-table .actions a {
+    color: #3498db;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 5px;
 }
 
-.todo-list li {
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    border-radius: 5px;
+.todo-table .actions a:hover {
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
 }
 
 .modal {
