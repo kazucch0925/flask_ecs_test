@@ -109,14 +109,16 @@ body {
     margin-top: 20px;
 }
 
-.todo-table th, .todo-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
 .todo-table th {
     background-color: #f2f2f2;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+.todo-table td {
+    padding: 10px;
 }
 
 .todo-table tbody tr:nth-child(even) {
@@ -135,10 +137,17 @@ body {
 .todo-table .actions a {
     color: #3498db;
     cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 5px;
 }
 
 .todo-table .actions a:hover {
-    text-decoration: underline;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
 }
 
 .modal {
