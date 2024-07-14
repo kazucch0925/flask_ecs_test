@@ -103,33 +103,41 @@ body {
     opacity: 0.8;
 }
 
-.todo-list {
-    list-style: none;
-    padding: 0;
+.todo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.todo-list li {
-    padding: 10px;
-    background-color: #fff;
+.todo-table th, .todo-table td {
     border: 1px solid #ddd;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 8px;
+    text-align: left;
 }
 
-.todo-list li .actions {
+.todo-table th {
+    background-color: #f2f2f2;
+}
+
+.todo-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.todo-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.todo-table .actions {
     display: flex;
     gap: 10px;
 }
 
-.todo-list li .actions a {
+.todo-table .actions a {
     color: #3498db;
     cursor: pointer;
 }
 
-.todo-list li .actions a:hover {
+.todo-table .actions a:hover {
     text-decoration: underline;
 }
 
