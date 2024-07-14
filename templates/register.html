@@ -23,7 +23,9 @@
                 <label for="password">パスワード:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">登録</button>
+            <div class="form-group">
+                <button type="submit">登録</button>
+            </div>
         </form>
         <p>既にアカウントをお持ちですか？ <a href="{{ url_for('auth.login') }}">ログイン</a></p>
     </div>
