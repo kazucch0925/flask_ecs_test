@@ -107,9 +107,9 @@
                 if (response.ok) {
                     return response.json();
                 } else {
-                    console.log('Response not OK. Status:', response.status);
+                    console.log('Response not OK. Status:', response.status); // レスポンスのステータスコードをログに出力
                     return response.text().then(text => {
-                        console.log('Response text:', text);
+                        console.log('Response text:', text); // レスポンスのテキストをログに出力
                         throw new Error('Failed to fetch todos');
                     });
                 }
@@ -119,6 +119,8 @@
                 todoListElement.innerHTML = '';
                 data.forEach(todo => {
                     const listItem = document.createElement('li');
+		    
+		    // ISO 8601形式の日時を日本時間に変換
                     const date = new Date(todo.created_at);
                     const formattedDate = new Intl.DateTimeFormat('ja-JP', {
                         year: 'numeric',
@@ -147,7 +149,7 @@
                 });
             })
             .catch(error => {
-                console.error('Error fetching todos:', error);
+                console.error('Error fetching todos:', error);  // レスポンスのステータスコードをログに出力
                 const errorMessageElement = document.querySelector('.error-message');
                 if (errorMessageElement) {
                     errorMessageElement.textContent = `タスクリストの取得に失敗しました: ${error.message}`;
