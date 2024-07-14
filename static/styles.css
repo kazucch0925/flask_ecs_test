@@ -69,7 +69,7 @@ body {
 }
 
 .form-group button {
-    background-color: #4CAF50;
+    background-color: #3498db;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -110,13 +110,27 @@ body {
 
 .todo-list li {
     padding: 10px;
-    background-color: #ecf0f1;
-    border: 1px solid #bdc3c7;
+    background-color: #fff;
+    border: 1px solid #ddd;
     margin-bottom: 10px;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.todo-list li .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.todo-list li .actions a {
+    color: #3498db;
+    cursor: pointer;
+}
+
+.todo-list li .actions a:hover {
+    text-decoration: underline;
 }
 
 .modal {
