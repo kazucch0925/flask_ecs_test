@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,9 @@
 </head>
 <body>
     <div class="navbar">
-        <div>
-            <a href="#" id="logoutLink">ログアウト</a>
+        <span>ToDoリスト</span>
+        <div class="nav-buttons">
+            <a href="/logout" id="logoutLink">ログアウト</a>
         </div>
     </div>
     <div class="content">
@@ -17,10 +18,14 @@
         {% if message %}
             <p class="error-message">{{ message }}</p>
         {% endif %}
-        <form id="editForm" class="task-form">
-            <label for="task">タスク:</label>
-            <input type="text" id="task" name="task" value="{{ todo.task }}" required>
-            <button type="submit">更新</button>
+        <form id="editForm" class="form">
+            <div class="form-group">
+                <label for="task">タスク:</label>
+                <input type="text" id="task" name="task" value="{{ todo.task }}" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">更新</button>
+            </div>
         </form>
     </div>
 
