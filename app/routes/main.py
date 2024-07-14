@@ -5,6 +5,18 @@ import pytz
 
 main_bp = Blueprint('main', __name__, template_folder='../../templates')
 
+def get_todo_response(todo):
+    tokyo_tz = pytz.timezone('Asia/Tokyo')
+    created_at_tokyo = todo.created_at.astimezone(tokyo_tz)
+    return {
+        "id": todo.id,
+        "task": todo.task,
+        "created_at": created_at_tokyo.isoformat(),
+        "priority": todo.priority,
+        "due_date": todo.due_date.isoformat() if todo.due_date else None,
+        "tags": todo.tags
+    }
+
 @main_bp.route('/')
 def index():
     if 'logged_in' in session and session['logged_in']:
@@ -29,14 +41,10 @@ def get_todos():
                 current_app.logger.error('Error: user_id not found in session. Session: %s', session)
                 return jsonify({"message": "user_id not found in session"}), 401
 
-            # Ensure tokyo_tz is defined before using it
             tokyo_tz = pytz.timezone('Asia/Tokyo')
-            
+
             todo_list = Todo.query.filter_by(user_id=user_id).all()
-            todos = []
-            for todo in todo_list:
-                created_at_tokyo = todo.created_at.astimezone(tokyo_tz)
-                todos.append({"id": todo.id, "task": todo.task, "created_at": created_at_tokyo.isoformat()})
+            todos = [get_todo_response(todo) for todo in todo_list]
             current_app.logger.info('Tasks retrieved at Tokyo time: %s. Session: %s', datetime.now(tokyo_tz).isoformat(), session)
             current_app.logger.info('Todos: %s', todos)
             return jsonify(todos)
