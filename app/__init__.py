@@ -41,7 +41,9 @@ def create_app():
 
     @app.errorhandler(Exception)
     def unhandled_exception(e):
-        app.logger.error(f'Unhandled Exception: {e}, route: {request.url}')
-        return jsonify({"message": "Unhandled exception occurred"}), 500
+        import traceback
+        tb_str = ''.join(traceback.format_tb(e.__traceback__))
+        app.logger.error(f'Unhandled Exception: {e}, route: {request.url}, traceback: {tb_str}')
+        return jsonify({"message": "Unhandled exception occurred", "error": str(e)}), 500
 
     return app

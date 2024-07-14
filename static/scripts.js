@@ -1,3 +1,28 @@
+document.getElementById('logoutButton').onclick = function() {
+    fetch('/logout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "User logged out successfully") {
+            window.location.href = data.redirect; // ログインページにリダイレクト
+        } else {
+            throw new Error(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error logging out:', error);
+        const errorMessageElement = document.querySelector('.error-message');
+        if (errorMessageElement) {
+            errorMessageElement.textContent = `ログアウトに失敗しました: ${error.message}`;
+            errorMessageElement.style.display = 'block';
+        }
+    });
+};
+
 document.getElementById('openModalButton').onclick = function() {
     document.getElementById('addTaskModal').style.display = 'block';
 };

@@ -75,4 +75,4 @@ def logout():
     session.clear() # セッションをクリア
     session['registered'] = True # ログインページに飛ばすために登録済みフラグを立てる
     current_app.logger.info('User logged out. Session: %s', session)
-    return jsonify({"message": "User logged out successfully"}), 200
+    return jsonify({"message": "User logged out successfully", "redirect": '/login'}), 200
