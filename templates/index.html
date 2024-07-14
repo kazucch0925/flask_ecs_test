@@ -149,7 +149,7 @@
                 });
             })
             .catch(error => {
-                console.error('Error fetching todos:', error);  // レスポンスのステータスコードをログに出力
+                console.error('Error fetching todos:', error);  // エラーをコンソールに出力
                 const errorMessageElement = document.querySelector('.error-message');
                 if (errorMessageElement) {
                     errorMessageElement.textContent = `タスクリストの取得に失敗しました: ${error.message}`;
