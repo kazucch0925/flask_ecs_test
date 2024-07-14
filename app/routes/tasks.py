@@ -14,7 +14,7 @@ def get_user_id_from_session():
 def get_todo_response(todo):
     tokyo_tz = pytz.timezone('Asia/Tokyo')
     created_at_tokyo = todo.created_at.astimezone(tokyo_tz)
-    return {
+    response = {
         "id": todo.id,
         "task": todo.task,
         "created_at": created_at_tokyo.isoformat(),
@@ -22,12 +22,18 @@ def get_todo_response(todo):
         "due_date": todo.due_date.isoformat() if todo.due_date else None,
         "tags": todo.tags
     }
+    current_app.logger.debug(f'Todo priority: {todo.priority}')
+    current_app.logger.debug(f'Todo due_date: {todo.due_date}')
+    current_app.logger.debug(f'Todo tags: {todo.tags}')
+    current_app.logger.debug(f'Generated response: {response}')
+    return response
 
 # タスクの追加ルート
 @tasks_bp.route('/todos', methods=['POST'])
 def add_todo():
     current_app.logger.info('Task add route called.')
     user_id = get_user_id_from_session()
+    current_app.logger.debug(f'User ID from session: {user_id}')
     if user_id is None:
         current_app.logger.error('Error: user_id not found in session. Session: %s', session)
         return jsonify({"message": "user_id not found in session"}), 401
@@ -69,6 +75,7 @@ def add_todo():
 # タスクの検索ルート
 @tasks_bp.route('/todos', methods=['GET'])
 def get_todos():
+    current_app.logger.info('Task retrieval route called.')
     user_id = get_user_id_from_session()
     if user_id is None:
         current_app.logger.error('Error: user_id not found in session. Session: %s', session)
@@ -82,8 +89,14 @@ def get_todos():
     else:
         todo_list = Todo.query.filter_by(user_id=user_id).all()
 
+    current_app.logger.debug(f'Search query: {search_query}')
+    for todo in todo_list:
+        current_app.logger.debug(f'Processing todo: {todo}')
+
     todos = [get_todo_response(todo) for todo in todo_list]
+    current_app.logger.debug(f'Generated todos response: {todos}')
     current_app.logger.info('Tasks retrieved at Tokyo time: %s. Session: %s', datetime.now(tokyo_tz).isoformat(), session)
+    current_app.logger.info('Todos: %s', todos)
     return jsonify(todos)
 
 # タスクの削除ルート

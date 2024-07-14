@@ -133,9 +133,11 @@
                 }
             })
             .then(data => {
+		console.log('Fetched todos:', data);  // デバッグ用ログ
                 const todoListElement = document.getElementById('todoList');
                 todoListElement.innerHTML = '';
                 data.forEach(todo => {
+		    console.log(todo);  // デバッグ用ログ
                     const listItem = document.createElement('li');
                     const date = new Date(todo.created_at);
                     const formattedDate = new Intl.DateTimeFormat('ja-JP', {
