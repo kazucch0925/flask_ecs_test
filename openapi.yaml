@@ -6,6 +6,13 @@ paths:
   /todos:
     get:
       summary: Get all todos
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          required: false
+          description: Search query to filter todos by task name
       responses:
         '200':
           description: A list of todos
@@ -95,6 +102,16 @@ components:
         created_at:
           type: string
           format: date-time
+        priority:
+          type: integer
+          description: "Priority level (1: Low, 2: Medium, 3: High)"
+        due_date:
+          type: string
+          format: date-time
+          description: "Due date for the task"
+        tags:
+          type: string
+          description: "Tags for the task (comma-separated)"
     User:
       type: object
       properties:
@@ -104,10 +121,14 @@ components:
           type: string
         password:
           type: string
+          format: password
+          description: "User's password (hashed)"
     Login:
       type: object
       properties:
         identifier:
           type: string
+          description: "Username or email"
         password:
           type: string
+          format: password
