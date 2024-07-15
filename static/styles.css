@@ -27,7 +27,7 @@ body {
     background-color: #3498db;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 15px;
     text-decoration: none;
     cursor: pointer;
     border-radius: 5px;
@@ -86,6 +86,7 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 .form-group button:hover {
@@ -95,7 +96,7 @@ body {
 /* 検索ボックスのスタイル */
 .search-group input {
     width: calc(100% - 100px);
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #bdc3c7;
     border-radius: 5px;
 }
@@ -119,6 +120,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    border: 1px solid #ddd;
 }
 
 .todo-table th {
@@ -126,11 +128,12 @@ body {
     padding: 10px;
     font-weight: bold;
     text-align: left;
-    border-bottom: 2px solid #ddd;
+    border: 1px solid #ddd;
 }
 
 .todo-table td {
     padding: 10px;
+    border: 1px solid #ddd;
 }
 
 .todo-table tbody tr:nth-child(even) {
