@@ -24,6 +24,18 @@
                 <input type="text" id="task" name="task" value="{{ todo.task }}" required>
             </div>
             <div class="form-group">
+                <label for="priority">優先度 (1-3):</label>
+                <input type="number" id="priority" name="priority" min="1" max="3" value="{{ todo.priority }}">
+            </div>
+            <div class="form-group">
+                <label for="due_date">期限:</label>
+                <input type="date" id="due_date" name="due_date" value="{{ todo.due_date }}">
+            </div>
+            <div class="form-group">
+                <label for="tags">タグ (カンマ区切り):</label>
+                <input type="text" id="tags" name="tags" value="{{ todo.tags }}">
+            </div>
+            <div class="form-group">
                 <button type="submit">更新</button>
             </div>
         </form>
@@ -34,13 +46,21 @@
             event.preventDefault();
             const taskId = {{ todo.id }};
             const taskValue = document.getElementById('task').value;
+            const priorityValue = document.getElementById('priority').value;
+            const dueDateValue = document.getElementById('due_date').value;
+            const tagsValue = document.getElementById('tags').value;
 
             fetch(`/todos/${taskId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ task: taskValue })
+                body: JSON.stringify({
+                    task: taskValue,
+                    priority: priorityValue,
+                    due_date: dueDateValue,
+                    tags: tagsValue
+                })
             })
             .then(response => {
                 if (response.ok) {
