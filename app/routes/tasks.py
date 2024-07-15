@@ -127,22 +127,40 @@ def edit_todo(id):
 
     todo = db.session.get(Todo, id)
     if todo and todo.user_id == user_id:
-        data = request.get_json() or {}
-        task = data.get('task')
-        priority = data.get('priority', todo.priority)
-        due_date = data.get('due_date', todo.due_date)
-        tags = data.get('tags', todo.tags)
+        try:
+            data = request.get_json() or {}
+            task = data.get('task')
+            priority = data.get('priority', todo.priority)
+            due_date = data.get('due_date', todo.due_date)
+            tags = data.get('tags', todo.tags)
 
-        if not task:
-            current_app.logger.warning('Failed to edit task. Task was empty. Session: %s', session)
-            return jsonify({"message": "タスクを入力してください"}), 400
-        todo.task = task
-        todo.priority = priority
-        todo.due_date = due_date
-        todo.tags = tags
-        db.session.commit()
-        current_app.logger.info('Task edited: %s. Session: %s', task, session)
-        return jsonify(get_todo_response(todo)), 200
+            current_app.logger.debug(f"Received data: {data}")
+            current_app.logger.debug(f"Task: {task}, Priority: {priority}, Due date: {due_date}, Tags: {tags}")
+
+            if not task:
+                current_app.logger.warning('Failed to edit task. Task was empty. Session: %s', session)
+                return jsonify({"message": "タスクを入力してください"}), 400
+
+            todo.task = task
+            todo.priority = priority
+            
+            if due_date:
+                try:
+                    due_date = datetime.strptime(due_date, '%Y-%m-%d').date()
+                    todo.due_date = due_date
+                except ValueError as e:
+                    current_app.logger.error('Failed to parse due date. Error: %s', str(e))
+                    return jsonify({"message": "Invalid due date format"}), 400
+
+            todo.tags = tags
+            db.session.commit()
+            current_app.logger.info('Task edited: %s. Session: %s', task, session)
+            return jsonify(get_todo_response(todo)), 200
+
+        except Exception as e:
+            current_app.logger.error('Failed to edit task. Error: %s', str(e))
+            db.session.rollback()
+            return jsonify({"message": "タスクの編集に失敗しました"}), 500
     else:
         current_app.logger.error('Error: Task not found or unauthorized access. Session: %s', session)
         return jsonify({"message": "Task not found or unauthorized access"}), 404
