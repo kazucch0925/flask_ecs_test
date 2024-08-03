@@ -58,6 +58,7 @@ function fetchTodos(search = '') {
             console.log('Fetched todos:', data);
             const todoListElement = document.getElementById('todoList');
             todoListElement.innerHTML = '';
+	    const priorityLabels = {1: '低', 2: '中', 3: '高'};
             data.forEach(todo => {
                 console.log(todo); // デバッグ用
                 const row = document.createElement('tr');
@@ -71,11 +72,12 @@ function fetchTodos(search = '') {
                     second: 'numeric',
                     timeZone: 'Asia/Tokyo'
                 }).format(date);
+		const priorityText = priorityLabels[todo.priority] || 'なし';
 
                 row.innerHTML = `
                     <td>${todo.task}</td>
                     <td>${formattedDate}</td>
-                    <td>${todo.priority !== undefined ? todo.priority : 'なし'}</td>
+		    <td>${priorityText}</td>
                     <td>${todo.due_date ? new Date(todo.due_date).toLocaleDateString('ja-JP') : 'なし'}</td>
                     <td>${todo.tags !== undefined ? todo.tags : 'なし'}</td>
                     <td class="actions">
