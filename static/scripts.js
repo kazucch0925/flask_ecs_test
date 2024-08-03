@@ -167,7 +167,7 @@ document.addEventListener('click', function(event) {
         const isComplete = event.target.checked;
 
         fetch(`/update-task-status/${taskId}`, {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
