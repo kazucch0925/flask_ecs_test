@@ -179,3 +179,28 @@ def get_todo_by_id(id):
     else:
         current_app.logger.error('Error: Task not found or unauthorized access. Session: %s', session)
         return jsonify({"message": "Task not found or unauthorized access"}), 404
+
+# タスクの完了状態を更新するルート
+@tasks_bp.route('/todos/<int:id>/status', methods=['PATCH'])
+def update_task_status(id):
+    user_id = get_user_id_from_session()
+    if user_id is None:
+        current_app.logger.error('Error: user_id not found in session. Session: %s', session)
+        return jsonify({"message": "user_id not found in session"}), 401
+
+    task = Todo.query.filter_by(id=id, user_id=user_id).first()
+    if not task:
+        return jsonify({"message": "Task not found or unauthorized access"}), 404
+
+    try:
+        data = request.get_json()
+        is_complete = data.get('isComplete')
+        if is_complete is not None:
+            task.is_complete = is_complete
+            db.session.commit()
+            return jsonify({"message": "Task status updated successfully"}), 200
+        else:
+            return jsonify({"message": "Invalid data provided"}), 400
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"message": "Failed to update task status"}), 500
