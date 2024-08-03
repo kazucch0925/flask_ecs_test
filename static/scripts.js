@@ -58,7 +58,7 @@ function fetchTodos(search = '') {
             console.log('Fetched todos:', data);
             const todoListElement = document.getElementById('todoList');
             todoListElement.innerHTML = '';
-	    const priorityLabels = {1: '低', 2: '中', 3: '高'};
+            const priorityLabels = {1: '低', 2: '中', 3: '高'};
             data.forEach(todo => {
                 console.log(todo); // デバッグ用
                 const row = document.createElement('tr');
@@ -72,13 +72,13 @@ function fetchTodos(search = '') {
                     second: 'numeric',
                     timeZone: 'Asia/Tokyo'
                 }).format(date);
-		const priorityText = priorityLabels[todo.priority] || 'なし';
+                const priorityText = priorityLabels[todo.priority] || 'なし';
 
                 row.innerHTML = `
-		    <td><input type="checkbox" class="task-complete-checkbox" data-task-id="${todo.id}" ${todo.is_complete ? 'checked' : ''}></td>
+                    <td><input type="checkbox" class="task-select-checkbox" data-task-id="${todo.id}"></td>
                     <td>${todo.task}</td>
                     <td>${formattedDate}</td>
-		    <td>${priorityText}</td>
+                    <td>${priorityText}</td>
                     <td>${todo.due_date ? new Date(todo.due_date).toLocaleDateString('ja-JP') : 'なし'}</td>
                     <td>${todo.tags !== undefined ? todo.tags : 'なし'}</td>
                     <td class="actions">
@@ -152,13 +152,33 @@ function deleteTask(id) {
         const errorMessageElement = document.querySelector('.error-message');
         if (errorMessageElement) {
             errorMessageElement.textContent = `削除に失敗しました: ${error.message}`;
-            errorMessageElement.style.display = 'block';
+            errorMessageElement.style.display 'block';
         }
     });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchTodos();
+});
+
+document.getElementById('selectAll').addEventListener('change', function(event) {
+    let checkboxes = document.querySelectorAll('.task-select-checkbox');
+    for (let checkbox of checkboxes) {
+        checkbox.checked = event.target.checked;
+    }
+});
+
+document.getElementById('deleteSelectedTasks').addEventListener('click', function() {
+    let selectedTasks = document.querySelectorAll('.task-select-checkbox:checked');
+    let idsToDelete = Array.from(selectedTasks).map(checkbox => checkbox.getAttribute('data-task-id'));
+    if (idsToDelete.length > 0) {
+        let confirmation = confirm(`選択した${idsToDelete.length}件のタスクを削除してよろしいですか？`);
+        if (confirmation) {
+            idsToDelete.forEach(id => {
+                deleteTask(id);
+            });
+        }
+    }
 });
 
 document.addEventListener('click', function(event) {
