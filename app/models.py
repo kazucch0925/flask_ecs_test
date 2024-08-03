@@ -16,4 +16,4 @@ class Todo(db.Model):
     due_date = db.Column(db.Date, nullable=True)
     tags = db.Column(db.String(200), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
+    is_complete = db.Column(db.Boolean, default=False)
