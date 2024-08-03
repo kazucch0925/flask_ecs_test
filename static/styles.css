@@ -203,6 +203,23 @@ body {
     cursor: pointer;
 }
 
+/* プルダウンメニューのスタイル */
+.form-group select {
+    border: 1px solid #333; /* 通常時の枠線を黒色に設定 */
+    /* その他のスタイル設定は維持 */
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-group select:focus {
+    border-color: #333; /* フォーカス時も枠線を黒色に */
+    box-shadow: none; /* フォーカス時のシャドウを削除 */
+}
+
 /* ログインフォームのスタイル */
 .login-container, .register-container {
     max-width: 400px;
