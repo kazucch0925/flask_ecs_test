@@ -166,7 +166,7 @@ document.addEventListener('click', function(event) {
         const taskId = event.target.getAttribute('data-task-id');
         const isComplete = event.target.checked;
 
-        fetch(`/update-task-status/${taskId}`, {
+        fetch(`/todos/${taskId}/status`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
