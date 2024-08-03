@@ -58,7 +58,7 @@ function fetchTodos(search = '') {
             console.log('Fetched todos:', data);
             const todoListElement = document.getElementById('todoList');
             todoListElement.innerHTML = '';
-	    const priorityLabels = {1: '低', 2: '中', 3: '高'};
+            const priorityLabels = {1: '低', 2: '中', 3: '高'};
             data.forEach(todo => {
                 console.log(todo); // デバッグ用
                 const row = document.createElement('tr');
@@ -72,12 +72,13 @@ function fetchTodos(search = '') {
                     second: 'numeric',
                     timeZone: 'Asia/Tokyo'
                 }).format(date);
-		const priorityText = priorityLabels[todo.priority] || 'なし';
+                const priorityText = priorityLabels[todo.priority] || 'なし';
 
                 row.innerHTML = `
+                    <td><input type="checkbox" class="task-select-checkbox" data-task-id="${todo.id}"></td>
                     <td>${todo.task}</td>
                     <td>${formattedDate}</td>
-		    <td>${priorityText}</td>
+                    <td>${priorityText}</td>
                     <td>${todo.due_date ? new Date(todo.due_date).toLocaleDateString('ja-JP') : 'なし'}</td>
                     <td>${todo.tags !== undefined ? todo.tags : 'なし'}</td>
                     <td class="actions">
@@ -86,6 +87,16 @@ function fetchTodos(search = '') {
                     </td>
                 `;
                 todoListElement.appendChild(row);
+            });
+
+            // 全選択機能の設定
+            const selectAllCheckbox = document.getElementById('selectAll');
+            selectAllCheckbox.checked = false; // 初期状態で未選択
+            selectAllCheckbox.addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.task-select-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                });
             });
         })
         .catch(error => {
@@ -156,6 +167,27 @@ function deleteTask(id) {
     });
 }
 
+// 選択したタスクを削除する関数
+function deleteSelectedTasks() {
+    const selectedTasks = document.querySelectorAll('.task-select-checkbox:checked');
+    const idsToDelete = Array.from(selectedTasks).map(checkbox => checkbox.getAttribute('data-task-id'));
+
+    if (idsToDelete.length > 0) {
+        const confirmation = confirm(`選択した${idsToDelete.length}件のタスクを削除してよろしいですか？`);
+        if (confirmation) {
+            idsToDelete.forEach(id => {
+                deleteTask(id);
+            });
+        }
+    } else {
+        alert('削除するタスクが選択されていません。');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     fetchTodos();
+
+    // 削除ボタンのイベントリスナーを追加
+    const deleteButton = document.getElementById('deleteSelectedTasks');
+    deleteButton.onclick = deleteSelectedTasks;
 });
