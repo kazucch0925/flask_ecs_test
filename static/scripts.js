@@ -75,6 +75,7 @@ function fetchTodos(search = '') {
 		const priorityText = priorityLabels[todo.priority] || 'なし';
 
                 row.innerHTML = `
+		    <td><input type="checkbox" class="task-complete-checkbox" data-task-id="${todo.id}" ${todo.is_complete ? 'checked' : ''}></td>
                     <td>${todo.task}</td>
                     <td>${formattedDate}</td>
 		    <td>${priorityText}</td>
@@ -158,4 +159,25 @@ function deleteTask(id) {
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchTodos();
+});
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('task-complete-checkbox')) {
+        const taskId = event.target.getAttribute('data-task-id');
+        const isComplete = event.target.checked;
+
+        fetch(`/update-task-status/${taskId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ isComplete: isComplete })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Task status updated', data);
+            fetchTodos(); // リストを更新
+        })
+        .catch(error => console.error('Error updating task status:', error));
+    }
 });
