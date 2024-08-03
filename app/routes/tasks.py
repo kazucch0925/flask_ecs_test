@@ -195,7 +195,7 @@ def update_task_status(id):
     try:
         data = request.get_json()
         is_complete = data.get('isComplete')
-        if is_complete is not None:
+        if is_complete is not None and isinstance(is_complete, bool):
             task.is_complete = is_complete
             db.session.commit()
             return jsonify({"message": "Task status updated successfully"}), 200
