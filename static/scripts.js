@@ -145,6 +145,7 @@ function addTask() {
             });
         }
     })
+    updateCheckboxes();
     .catch(error => {
         console.error('Error adding task:', error);
         const errorMessageElement = document.querySelector('.error-message');
@@ -169,6 +170,7 @@ function deleteTask(id) {
             });
         }
     })
+    updateCheckboxes();
     .catch(error => {
         console.error('Error deleting task:', error);
         const errorMessageElement = document.querySelector('.error-message');
