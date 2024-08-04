@@ -37,6 +37,17 @@ window.onclick = function(event) {
     }
 };
 
+// タスクが一つもない場合はチェックボックスを非活性
+function updateCheckboxes() {
+    const tasks = document.querySelectorAll('#todoList tr');
+    const selectAllCheckbox = document.getElementById('selectAll');
+    if (tasks.length === 0) {
+        selectAllCheckbox.disabled = true;
+    } else {
+        selectAllCheckbox.disabled = false;
+    }
+}
+
 function fetchTodos(search = '') {
     let url = '/todos';
     if (search) {
@@ -107,6 +118,7 @@ function fetchTodos(search = '') {
                 errorMessageElement.style.display = 'block';
             }
         });
+	updateCheckboxes();
 }
 
 function addTask() {
