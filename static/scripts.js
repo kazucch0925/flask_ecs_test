@@ -37,6 +37,22 @@ window.onclick = function(event) {
     }
 };
 
+// トースト通知を表示する関数
+function showToast(message) {
+    const toastContainer = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 100);
+
+    // 5秒後にトーストを削除
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toastContainer.removeChild(toast), 500);
+    }, 5000);
+}
+
 // タスクが一つもない場合はチェックボックスを非活性
 function updateCheckboxes() {
     const tasks = document.querySelectorAll('#todoList tr');
@@ -138,6 +154,7 @@ function addTask() {
         if (response.ok) {
             document.getElementById('addTaskModal').style.display = 'none';
             fetchTodos();
+	    showToast('タスクが正常に追加されました。');
         } else {
             return response.text().then(text => {
                 console.log('Response text:', text);
@@ -148,6 +165,7 @@ function addTask() {
     updateCheckboxes();
     .catch(error => {
         console.error('Error adding task:', error);
+	showToast(`追加に失敗しました: ${error.message}`);
         const errorMessageElement = document.querySelector('.error-message');
         if (errorMessageElement) {
             errorMessageElement.textContent = `追加に失敗しました: ${error.message}`;
@@ -163,6 +181,7 @@ function deleteTask(id) {
     .then(response => {
         if (response.ok) {
             fetchTodos();
+	    showToast('タスクが正常に削除されました。');
         } else {
             return response.text().then(text => {
                 console.log('Response text:', text);
@@ -173,6 +192,7 @@ function deleteTask(id) {
     updateCheckboxes();
     .catch(error => {
         console.error('Error deleting task:', error);
+	showToast(`削除に失敗しました: ${error.message}`);
         const errorMessageElement = document.querySelector('.error-message');
         if (errorMessageElement) {
             errorMessageElement.textContent = `削除に失敗しました: ${error.message}`;
@@ -194,7 +214,7 @@ function deleteSelectedTasks() {
             });
         }
     } else {
-        alert('削除するタスクが選択されていません。');
+        showToast('削除するタスクが選択されていません。');
     }
 }
 
