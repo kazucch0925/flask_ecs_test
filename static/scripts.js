@@ -38,10 +38,10 @@ window.onclick = function(event) {
 };
 
 // トースト通知を表示する関数
-function showToast(message) {
+function showToast(message, type) {
     const toastContainer = document.getElementById('toastContainer');
     const toast = document.createElement('div');
-    toast.className = 'toast';
+    toast.className = `toast ${type}`;
     toast.textContent = message;
     toastContainer.appendChild(toast);
     setTimeout(() => toast.classList.add('show'), 100);
@@ -156,7 +156,7 @@ function addTask() {
         if (response.ok) {
             document.getElementById('addTaskModal').style.display = 'none';
             fetchTodos();
-	    showToast('タスクが正常に追加されました。');
+	    showToast('タスクが正常に追加されました。', 'success');
         } else {
             return response.text().then(text => {
                 console.log('Response text:', text);
@@ -166,7 +166,7 @@ function addTask() {
     })
     .catch(error => {
         console.error('Error adding task:', error);
-	showToast(`追加に失敗しました: ${error.message}`);
+	showToast(`追加に失敗しました: ${error.message}`, 'error');
         const errorMessageElement = document.querySelector('.error-message');
         if (errorMessageElement) {
             errorMessageElement.textContent = `追加に失敗しました: ${error.message}`;
@@ -185,7 +185,7 @@ function deleteTask(id) {
     .then(response => {
         if (response.ok) {
             fetchTodos();
-	    showToast('タスクが正常に削除されました。');
+	    showToast('タスクが正常に削除されました。', 'seccess');
         } else {
             return response.text().then(text => {
                 console.log('Response text:', text);
@@ -195,7 +195,7 @@ function deleteTask(id) {
     })
     .catch(error => {
         console.error('Error deleting task:', error);
-	showToast(`削除に失敗しました: ${error.message}`);
+	showToast(`削除に失敗しました: ${error.message}`, 'error');
         const errorMessageElement = document.querySelector('.error-message');
         if (errorMessageElement) {
             errorMessageElement.textContent = `削除に失敗しました: ${error.message}`;
@@ -220,7 +220,7 @@ function deleteSelectedTasks() {
             });
         }
     } else {
-        showToast('削除するタスクが選択されていません。');
+        showToast('削除するタスクが選択されていません。', 'warning');
     }
 }
 
