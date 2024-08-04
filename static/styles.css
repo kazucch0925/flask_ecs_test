@@ -306,3 +306,23 @@ body {
 .toast.show {
     opacity: 1;
 }
+
+/* エラートースト */
+.toast.error {
+    background-color: #d9534f; /* レッド */
+}
+
+/* 警告トースト */
+.toast.warning {
+    background-color: #f0ad4e; /* イエロー */
+}
+
+/* 成功トースト */
+.toast.success {
+    background-color: #5cb85c; /* グリーン */
+}
+
+/* その他トースト */
+.toast.info {
+    background-color: #5bc0de; /* ブルー */
+}

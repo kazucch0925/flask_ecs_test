@@ -133,8 +133,10 @@ function fetchTodos(search = '') {
                 errorMessageElement.textContent = `タスクの取得に失敗しました: ${error.message}`;
                 errorMessageElement.style.display = 'block';
             }
+        })
+        .finally(() => {
+            updateCheckboxes();
         });
-	updateCheckboxes();
 }
 
 function addTask() {
@@ -162,7 +164,6 @@ function addTask() {
             });
         }
     })
-    updateCheckboxes();
     .catch(error => {
         console.error('Error adding task:', error);
 	showToast(`追加に失敗しました: ${error.message}`);
@@ -171,6 +172,9 @@ function addTask() {
             errorMessageElement.textContent = `追加に失敗しました: ${error.message}`;
             errorMessageElement.style.display = 'block';
         }
+    })
+    .finally(() => {
+        updateCheckboxes();
     });
 }
 
@@ -189,7 +193,6 @@ function deleteTask(id) {
             });
         }
     })
-    updateCheckboxes();
     .catch(error => {
         console.error('Error deleting task:', error);
 	showToast(`削除に失敗しました: ${error.message}`);
@@ -198,6 +201,9 @@ function deleteTask(id) {
             errorMessageElement.textContent = `削除に失敗しました: ${error.message}`;
             errorMessageElement.style.display = 'block';
         }
+    })
+    .finally(() => {
+        updateCheckboxes();
     });
 }
 
