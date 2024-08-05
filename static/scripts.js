@@ -37,6 +37,33 @@ window.onclick = function(event) {
     }
 };
 
+// トースト通知を表示する関数
+function showToast(message, type) {
+    const toastContainer = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 100);
+
+    // 5秒後にトーストを削除
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toastContainer.removeChild(toast), 500);
+    }, 5000);
+}
+
+// タスクが一つもない場合はチェックボックスを非活性
+function updateCheckboxes() {
+    const tasks = document.querySelectorAll('#todoList tr');
+    const selectAllCheckbox = document.getElementById('selectAll');
+    if (tasks.length === 0) {
+        selectAllCheckbox.disabled = true;
+    } else {
+        selectAllCheckbox.disabled = false;
+    }
+}
+
 function fetchTodos(search = '') {
     let url = '/todos';
     if (search) {
@@ -58,7 +85,7 @@ function fetchTodos(search = '') {
             console.log('Fetched todos:', data);
             const todoListElement = document.getElementById('todoList');
             todoListElement.innerHTML = '';
-	    const priorityLabels = {1: '低', 2: '中', 3: '高'};
+            const priorityLabels = {1: '低', 2: '中', 3: '高'};
             data.forEach(todo => {
                 console.log(todo); // デバッグ用
                 const row = document.createElement('tr');
@@ -72,12 +99,13 @@ function fetchTodos(search = '') {
                     second: 'numeric',
                     timeZone: 'Asia/Tokyo'
                 }).format(date);
-		const priorityText = priorityLabels[todo.priority] || 'なし';
+                const priorityText = priorityLabels[todo.priority] || 'なし';
 
                 row.innerHTML = `
+                    <td><input type="checkbox" class="task-select-checkbox" data-task-id="${todo.id}"></td>
                     <td>${todo.task}</td>
                     <td>${formattedDate}</td>
-		    <td>${priorityText}</td>
+                    <td>${priorityText}</td>
                     <td>${todo.due_date ? new Date(todo.due_date).toLocaleDateString('ja-JP') : 'なし'}</td>
                     <td>${todo.tags !== undefined ? todo.tags : 'なし'}</td>
                     <td class="actions">
@@ -87,6 +115,16 @@ function fetchTodos(search = '') {
                 `;
                 todoListElement.appendChild(row);
             });
+
+            // 全選択機能の設定
+            const selectAllCheckbox = document.getElementById('selectAll');
+            selectAllCheckbox.checked = false; // 初期状態で未選択
+            selectAllCheckbox.addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.task-select-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                });
+            });
         })
         .catch(error => {
             console.error('Error fetching todos:', error);
@@ -95,6 +133,9 @@ function fetchTodos(search = '') {
                 errorMessageElement.textContent = `タスクの取得に失敗しました: ${error.message}`;
                 errorMessageElement.style.display = 'block';
             }
+        })
+        .finally(() => {
+            updateCheckboxes();
         });
 }
 
@@ -115,6 +156,7 @@ function addTask() {
         if (response.ok) {
             document.getElementById('addTaskModal').style.display = 'none';
             fetchTodos();
+	    showToast('タスクが正常に追加されました。', 'success');
         } else {
             return response.text().then(text => {
                 console.log('Response text:', text);
@@ -124,11 +166,15 @@ function addTask() {
     })
     .catch(error => {
         console.error('Error adding task:', error);
+	showToast(`追加に失敗しました: ${error.message}`, 'error');
         const errorMessageElement = document.querySelector('.error-message');
         if (errorMessageElement) {
             errorMessageElement.textContent = `追加に失敗しました: ${error.message}`;
             errorMessageElement.style.display = 'block';
         }
+    })
+    .finally(() => {
+        updateCheckboxes();
     });
 }
 
@@ -139,6 +185,7 @@ function deleteTask(id) {
     .then(response => {
         if (response.ok) {
             fetchTodos();
+	    showToast('タスクが正常に削除されました。', 'seccess');
         } else {
             return response.text().then(text => {
                 console.log('Response text:', text);
@@ -148,14 +195,39 @@ function deleteTask(id) {
     })
     .catch(error => {
         console.error('Error deleting task:', error);
+	showToast(`削除に失敗しました: ${error.message}`, 'error');
         const errorMessageElement = document.querySelector('.error-message');
         if (errorMessageElement) {
             errorMessageElement.textContent = `削除に失敗しました: ${error.message}`;
             errorMessageElement.style.display = 'block';
         }
+    })
+    .finally(() => {
+        updateCheckboxes();
     });
+}
+
+// 選択したタスクを削除する関数
+function deleteSelectedTasks() {
+    const selectedTasks = document.querySelectorAll('.task-select-checkbox:checked');
+    const idsToDelete = Array.from(selectedTasks).map(checkbox => checkbox.getAttribute('data-task-id'));
+
+    if (idsToDelete.length > 0) {
+        const confirmation = confirm(`選択した${idsToDelete.length}件のタスクを削除してよろしいですか？`);
+        if (confirmation) {
+            idsToDelete.forEach(id => {
+                deleteTask(id);
+            });
+        }
+    } else {
+        showToast('削除するタスクが選択されていません。', 'warning');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchTodos();
+
+    // 削除ボタンのイベントリスナーを追加
+    const deleteButton = document.getElementById('deleteSelectedTasks');
+    deleteButton.onclick = deleteSelectedTasks;
 });
