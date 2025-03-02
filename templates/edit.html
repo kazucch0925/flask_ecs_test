@@ -18,7 +18,7 @@
         {% if message %}
             <p class="error-message">{{ message }}</p>
         {% endif %}
-        <form id="editForm" class="form">
+        <form id="editForm" class="form" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="task">タスク:</label>
                 <input type="text" id="task" name="task" value="{{ todo.task }}" required>
@@ -40,45 +40,182 @@
                 <input type="text" id="tags" name="tags" value="{{ todo.tags }}">
             </div>
             <div class="form-group">
+                <label for="image">画像:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+                <div class="image-preview" id="imagePreview">
+                    {% if todo.image_path %}
+                    <div class="current-image-container">
+                        <img src="{{ todo.image_path }}" alt="現在の画像" class="preview-image">
+                        <p>現在の画像</p>
+                        <button type="button" id="deleteImageBtn" class="delete-image-btn">画像を削除</button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
                 <button type="submit">更新</button>
             </div>
         </form>
     </div>
 
     <script>
+        // 画像プレビュー機能
+        document.getElementById('image').addEventListener('change', function(event) {
+            const imagePreview = document.getElementById('imagePreview');
+            // 現在の画像コンテナを削除
+            const currentContainer = imagePreview.querySelector('.current-image-container');
+            if (currentContainer) {
+                imagePreview.removeChild(currentContainer);
+            }
+            
+            // 新しい画像がある場合は表示
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'preview-image';
+                    
+                    const text = document.createElement('p');
+                    text.textContent = '新しい画像';
+                    
+                    imagePreview.appendChild(img);
+                    imagePreview.appendChild(text);
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        // 画像削除ボタンのイベントリスナー
+        const deleteImageBtn = document.getElementById('deleteImageBtn');
+        if (deleteImageBtn) {
+            deleteImageBtn.addEventListener('click', function() {
+                if (confirm('画像を削除してもよろしいですか？')) {
+                    const taskId = "{{ todo.id }}";
+                    const taskValue = document.getElementById('task').value;
+                    const priorityValue = document.getElementById('priority').value;
+                    const dueDateValue = document.getElementById('due_date').value;
+                    const tagsValue = document.getElementById('tags').value;
+                    
+                    // 画像を削除するためのリクエスト
+                    fetch(`/todos/${taskId}/delete_image`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            task: taskValue,
+                            priority: priorityValue,
+                            due_date: dueDateValue,
+                            tags: tagsValue
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // 画像プレビューを削除
+                            const imagePreview = document.getElementById('imagePreview');
+                            const currentContainer = imagePreview.querySelector('.current-image-container');
+                            if (currentContainer) {
+                                imagePreview.removeChild(currentContainer);
+                            }
+                            showToast('画像が削除されました', 'success');
+                        } else {
+                            return response.json().then(data => { throw new Error(data.message); });
+                        }
+                    })
+                    .catch(error => {
+                        showToast(`画像の削除に失敗しました: ${error.message}`, 'error');
+                    });
+                }
+            });
+        }
+
+        // トースト通知を表示する関数
+        function showToast(message, type) {
+            // エラーメッセージ要素を取得または作成
+            let errorMessageElement = document.querySelector('.error-message');
+            if (!errorMessageElement) {
+                errorMessageElement = document.createElement('p');
+                errorMessageElement.className = 'error-message';
+                const contentDiv = document.querySelector('.content');
+                contentDiv.insertBefore(errorMessageElement, contentDiv.firstChild);
+            }
+            
+            errorMessageElement.textContent = message;
+            errorMessageElement.style.display = 'block';
+            errorMessageElement.style.color = type === 'error' ? 'red' : 'green';
+            
+            // 5秒後にメッセージを非表示
+            setTimeout(() => {
+                errorMessageElement.style.display = 'none';
+            }, 5000);
+        }
+
         document.getElementById('editForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const taskId = {{ todo.id }};
+            const taskId = "{{ todo.id }}";
             const taskValue = document.getElementById('task').value;
             const priorityValue = document.getElementById('priority').value;
             const dueDateValue = document.getElementById('due_date').value;
             const tagsValue = document.getElementById('tags').value;
-
-            fetch(`/todos/${taskId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    task: taskValue,
-                    priority: priorityValue,
-                    due_date: dueDateValue,
-                    tags: tagsValue
+            const imageFile = document.getElementById('image').files[0];
+            
+            // 画像ファイルがある場合はFormDataを使用
+            if (imageFile) {
+                const formData = new FormData();
+                formData.append('task', taskValue);
+                formData.append('priority', priorityValue);
+                if (dueDateValue) formData.append('due_date', dueDateValue);
+                if (tagsValue) formData.append('tags', tagsValue);
+                formData.append('image', imageFile);
+                
+                fetch(`/todos/${taskId}`, {
+                    method: 'POST', // POSTメソッドを使用
+                    body: formData
                 })
-            })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = '/';
-                } else {
-                    return response.json().then(data => { throw new Error(data.message) });
-                }
-            })
-            .catch(error => {
-                const errorMessageElement = document.querySelector('.error-message');
-                if (errorMessageElement) {
-                    errorMessageElement.textContent = error.message;
-                }
-            });
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/';
+                    } else {
+                        return response.json().then(data => { throw new Error(data.message); });
+                    }
+                })
+                .catch(error => {
+                    const errorMessageElement = document.querySelector('.error-message');
+                    if (errorMessageElement) {
+                        errorMessageElement.textContent = error.message;
+                        errorMessageElement.style.display = 'block';
+                    }
+                });
+            } else {
+                // 画像がない場合は従来のJSON形式で送信
+                fetch(`/todos/${taskId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        task: taskValue,
+                        priority: priorityValue,
+                        due_date: dueDateValue,
+                        tags: tagsValue
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/';
+                    } else {
+                        return response.json().then(data => { throw new Error(data.message); });
+                    }
+                })
+                .catch(error => {
+                    const errorMessageElement = document.querySelector('.error-message');
+                    if (errorMessageElement) {
+                        errorMessageElement.textContent = error.message;
+                        errorMessageElement.style.display = 'block';
+                    }
+                });
+            }
         });
 
         document.getElementById('logoutLink').addEventListener('click', function(event) {
@@ -90,13 +227,14 @@
                 if (response.ok) {
                     window.location.href = '/login';
                 } else {
-                    return response.json().then(data => { throw new Error(data.message) });
+                    return response.json().then(data => { throw new Error(data.message); });
                 }
             })
             .catch(error => {
                 const errorMessageElement = document.querySelector('.error-message');
                 if (errorMessageElement) {
                     errorMessageElement.textContent = error.message;
+                    errorMessageElement.style.display = 'block';
                 }
             });
         });

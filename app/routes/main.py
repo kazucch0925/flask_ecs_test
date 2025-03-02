@@ -14,7 +14,8 @@ def get_todo_response(todo):
         "created_at": created_at_tokyo.isoformat(),
         "priority": todo.priority,
         "due_date": todo.due_date.isoformat() if todo.due_date else None,
-        "tags": todo.tags
+        "tags": todo.tags,
+        "image_path": todo.image_path
     }
 
 @main_bp.route('/')

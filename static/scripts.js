@@ -64,6 +64,23 @@ function updateCheckboxes() {
     }
 }
 
+// 画像プレビュー機能
+document.getElementById('image').addEventListener('change', function(event) {
+    const imagePreview = document.getElementById('imagePreview');
+    imagePreview.innerHTML = '';
+    
+    if (this.files && this.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.className = 'preview-image';
+            imagePreview.appendChild(img);
+        };
+        reader.readAsDataURL(this.files[0]);
+    }
+});
+
 function fetchTodos(search = '') {
     let url = '/todos';
     if (search) {
@@ -100,6 +117,12 @@ function fetchTodos(search = '') {
                     timeZone: 'Asia/Tokyo'
                 }).format(date);
                 const priorityText = priorityLabels[todo.priority] || 'なし';
+                
+                // 画像表示用のHTML
+                let imageHtml = 'なし';
+                if (todo.image_path) {
+                    imageHtml = `<img src="${todo.image_path}" alt="タスク画像" class="task-image" onclick="showFullImage('${todo.image_path}')">`;
+                }
 
                 row.innerHTML = `
                     <td><input type="checkbox" class="task-select-checkbox" data-task-id="${todo.id}"></td>
@@ -108,6 +131,7 @@ function fetchTodos(search = '') {
                     <td>${priorityText}</td>
                     <td>${todo.due_date ? new Date(todo.due_date).toLocaleDateString('ja-JP') : 'なし'}</td>
                     <td>${todo.tags !== undefined ? todo.tags : 'なし'}</td>
+                    <td class="image-cell">${imageHtml}</td>
                     <td class="actions">
                         <a href="#" onclick="deleteTask(${todo.id})">削除</a>
                         <a href="/todos/${todo.id}">編集</a>
@@ -139,43 +163,116 @@ function fetchTodos(search = '') {
         });
 }
 
+// 画像を拡大表示する関数
+function showFullImage(imagePath) {
+    // モーダルを作成
+    const modal = document.createElement('div');
+    modal.className = 'image-modal';
+    
+    // 画像要素を作成
+    const img = document.createElement('img');
+    img.src = imagePath;
+    img.className = 'full-image';
+    
+    // 閉じるボタンを作成
+    const closeBtn = document.createElement('span');
+    closeBtn.className = 'close-image-modal';
+    closeBtn.innerHTML = '&times;';
+    closeBtn.onclick = function() {
+        document.body.removeChild(modal);
+    };
+    
+    // モーダルに要素を追加
+    modal.appendChild(closeBtn);
+    modal.appendChild(img);
+    
+    // モーダルをクリックしたら閉じる
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            document.body.removeChild(modal);
+        }
+    };
+    
+    // モーダルをbodyに追加
+    document.body.appendChild(modal);
+}
+
 function addTask() {
     const task = document.getElementById('task').value;
     const priority = document.getElementById('priority').value;
     const due_date = document.getElementById('due_date').value;
     const tags = document.getElementById('tags').value;
-
-    fetch('/todos', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ task, priority, due_date, tags })
-    })
-    .then(response => {
-        if (response.ok) {
-            document.getElementById('addTaskModal').style.display = 'none';
-            fetchTodos();
-	    showToast('タスクが正常に追加されました。', 'success');
-        } else {
-            return response.text().then(text => {
-                console.log('Response text:', text);
-                throw new Error('Failed to add task');
-            });
-        }
-    })
-    .catch(error => {
-        console.error('Error adding task:', error);
-	showToast(`追加に失敗しました: ${error.message}`, 'error');
-        const errorMessageElement = document.querySelector('.error-message');
-        if (errorMessageElement) {
-            errorMessageElement.textContent = `追加に失敗しました: ${error.message}`;
-            errorMessageElement.style.display = 'block';
-        }
-    })
-    .finally(() => {
-        updateCheckboxes();
-    });
+    const imageFile = document.getElementById('image').files[0];
+    
+    // 画像ファイルがある場合はFormDataを使用
+    if (imageFile) {
+        const formData = new FormData();
+        formData.append('task', task);
+        formData.append('priority', priority);
+        if (due_date) formData.append('due_date', due_date);
+        if (tags) formData.append('tags', tags);
+        formData.append('image', imageFile);
+        
+        fetch('/todos', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('addTaskModal').style.display = 'none';
+                document.getElementById('addTaskForm').reset();
+                document.getElementById('imagePreview').innerHTML = '';
+                fetchTodos();
+                showToast('タスクが正常に追加されました。', 'success');
+            } else {
+                return response.text().then(text => {
+                    console.log('Response text:', text);
+                    throw new Error('Failed to add task');
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error adding task:', error);
+            showToast(`追加に失敗しました: ${error.message}`, 'error');
+        })
+        .finally(() => {
+            updateCheckboxes();
+        });
+    } else {
+        // 画像がない場合は従来のJSON形式で送信
+        fetch('/todos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ task, priority, due_date, tags })
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('addTaskModal').style.display = 'none';
+                document.getElementById('addTaskForm').reset();
+                fetchTodos();
+                showToast('タスクが正常に追加されました。', 'success');
+            } else {
+                return response.text().then(text => {
+                    console.log('Response text:', text);
+                    throw new Error('Failed to add task');
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error adding task:', error);
+            showToast(`追加に失敗しました: ${error.message}`, 'error');
+            const errorMessageElement = document.querySelector('.error-message');
+            if (errorMessageElement) {
+                errorMessageElement.textContent = `追加に失敗しました: ${error.message}`;
+                errorMessageElement.style.display = 'block';
+            }
+        })
+        .finally(() => {
+            updateCheckboxes();
+        });
+    }
 }
 
 function deleteTask(id) {

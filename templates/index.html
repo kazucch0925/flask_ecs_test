@@ -29,6 +29,7 @@
                     <th>優先度</th>
                     <th>期限</th>
                     <th>タグ</th>
+                    <th>画像</th>
                     <th>操作</th>
                 </tr>
             </thead>
@@ -46,29 +47,36 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>タスクの追加</h2>
-            <div class="form-group">
-                <label for="task">タスク名:</label>
-                <input type="text" id="task" placeholder="タスクを入力">
-            </div>
-            <div class="form-group">
-                <label for="priority">優先度:</label>
-                <select id="priority" name="priority">
-                    <option value="1">低</option>
-                    <option value="2">中</option>
-                    <option value="3">高</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="due_date">期限:</label>
-                <input type="date" id="due_date">
-            </div>
-            <div class="form-group">
-                <label for="tags">タグ:</label>
-                <input type="text" id="tags" placeholder="タグ (カンマ区切り)">
-            </div>
-            <div class="form-group">
-                <button onclick="addTask()">追加</button>
-            </div>
+            <form id="addTaskForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="task">タスク名:</label>
+                    <input type="text" id="task" name="task" placeholder="タスクを入力">
+                </div>
+                <div class="form-group">
+                    <label for="priority">優先度:</label>
+                    <select id="priority" name="priority">
+                        <option value="1">低</option>
+                        <option value="2">中</option>
+                        <option value="3">高</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="due_date">期限:</label>
+                    <input type="date" id="due_date" name="due_date">
+                </div>
+                <div class="form-group">
+                    <label for="tags">タグ:</label>
+                    <input type="text" id="tags" name="tags" placeholder="タグ (カンマ区切り)">
+                </div>
+                <div class="form-group">
+                    <label for="image">画像:</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                    <div class="image-preview" id="imagePreview"></div>
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="addTask()">追加</button>
+                </div>
+            </form>
         </div>
     </div>
 

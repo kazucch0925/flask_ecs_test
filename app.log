@@ -1,0 +1,530 @@
+2025-03-01 02:15:54,836 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://192.168.10.101:80 [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-01 02:15:54,836 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-01 02:15:54,840 INFO:  * Restarting with stat [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-01 02:15:55,262 WARNING:  * Debugger is active! [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-01 02:15:55,265 INFO:  * Debugger PIN: 124-768-062 [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-01 02:17:12,985 INFO: 127.0.0.1 - - [01/Mar/2025 02:17:12] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-01 02:17:12,998 INFO: 127.0.0.1 - - [01/Mar/2025 02:17:12] "GET /register HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-01 02:17:13,301 INFO: 127.0.0.1 - - [01/Mar/2025 02:17:13] "GET /static/styles.css HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-01 02:17:13,675 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-01 02:17:13,676 INFO: 127.0.0.1 - - [01/Mar/2025 02:17:13] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:08:41,473 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://192.168.10.101:80 [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:08:41,474 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:08:41,479 INFO:  * Restarting with stat [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:08:41,933 WARNING:  * Debugger is active! [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:08:41,937 INFO:  * Debugger PIN: 124-768-062 [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:44,104 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:44] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:44,115 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:44] "GET /register HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:44,432 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:44] "GET /static/styles.css HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:44,856 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 01:11:44,857 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:44] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:46,542 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:46] "GET /login HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:46,864 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:47,208 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 01:11:47,209 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:47] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:51,244 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:51] "GET /register HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:51,561 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:11:51,592 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 01:11:51,593 INFO: 127.0.0.1 - - [02/Mar/2025 01:11:51] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:12:09,601 INFO: User registered: user. Session: <SecureCookieSession {'registered': True, 'user_id': 1, 'logged_in': True}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\auth.py:43]
+2025-03-02 01:12:09,602 INFO: 127.0.0.1 - - [02/Mar/2025 01:12:09] "[35m[1mPOST /register HTTP/1.1[0m" 201 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:12:09,914 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:27]
+2025-03-02 01:12:09,916 INFO: 127.0.0.1 - - [02/Mar/2025 01:12:09] "GET / HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:12:09,938 INFO: 127.0.0.1 - - [02/Mar/2025 01:12:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:12:10,177 INFO: 127.0.0.1 - - [02/Mar/2025 01:12:10] "GET /static/scripts.js HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:12:10,488 INFO: Task retrieval route called. [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:37]
+2025-03-02 01:12:10,504 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 01:12:10,505 INFO: 127.0.0.1 - - [02/Mar/2025 01:12:10] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:12:10,581 INFO: Tasks retrieved at Tokyo time: 2025-03-02T01:12:10.581528+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:48]
+2025-03-02 01:12:10,581 INFO: Todos: [] [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:49]
+2025-03-02 01:12:10,582 INFO: 127.0.0.1 - - [02/Mar/2025 01:12:10] "GET /todos HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:28,080 INFO: Task add route called. [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:64]
+2025-03-02 01:13:28,081 DEBUG: User ID from session: 1 [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:66]
+2025-03-02 01:13:28,086 DEBUG: Uploaded image path: /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:96]
+2025-03-02 01:13:28,087 DEBUG: Task: test, Priority: 1, Due date: 2025-03-01, Tags: a, Image: /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:98]
+2025-03-02 01:13:28,101 INFO: Task added at Tokyo time: 2025-03-02T01:13:28.087018+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:121]
+2025-03-02 01:13:28,103 DEBUG: Todo priority: 1 [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-02 01:13:28,104 DEBUG: Todo due_date: 2025-03-01 [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-02 01:13:28,104 DEBUG: Todo tags: a [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-02 01:13:28,104 DEBUG: Todo image_path: /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-02 01:13:28,105 DEBUG: Generated response: {'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png'} [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-02 01:13:28,105 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:28] "[35m[1mPOST /todos HTTP/1.1[0m" 201 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:28,341 INFO: Task retrieval route called. [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:37]
+2025-03-02 01:13:28,343 INFO: Tasks retrieved at Tokyo time: 2025-03-02T01:13:28.343590+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:48]
+2025-03-02 01:13:28,344 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a'}] [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:49]
+2025-03-02 01:13:28,345 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:28] "GET /todos HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:35,880 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:35] "GET /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:36,182 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:36,198 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:36] "GET /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:36,526 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 01:13:36,526 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:36] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:50,940 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 01:13:50,941 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:50] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:53,640 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:53] "GET /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:53,956 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:53,970 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:53] "[36mGET /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:54,285 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 01:13:54,285 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:54] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:55,457 DEBUG: Received JSON data: {'task': 'test', 'priority': '1', 'due_date': '2025-03-01', 'tags': 'a'} [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:193]
+2025-03-02 01:13:55,457 DEBUG: Task: test, Priority: 1, Due date: 2025-03-01, Tags: a, Image: /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:211]
+2025-03-02 01:13:55,459 INFO: Task edited: test. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:232]
+2025-03-02 01:13:55,459 DEBUG: Todo priority: 1 [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-02 01:13:55,460 DEBUG: Todo due_date: 2025-03-01 [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-02 01:13:55,460 DEBUG: Todo tags: a [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-02 01:13:55,461 DEBUG: Todo image_path: /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-02 01:13:55,461 DEBUG: Generated response: {'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png'} [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-02 01:13:55,462 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:55] "PUT /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:55,773 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:27]
+2025-03-02 01:13:55,774 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:55] "GET / HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:55,784 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:56,037 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:56] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:56,344 INFO: Task retrieval route called. [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:37]
+2025-03-02 01:13:56,346 INFO: Tasks retrieved at Tokyo time: 2025-03-02T01:13:56.346711+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:48]
+2025-03-02 01:13:56,347 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a'}] [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:49]
+2025-03-02 01:13:56,347 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:56] "GET /todos HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:13:56,360 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 01:13:56,361 INFO: 127.0.0.1 - - [02/Mar/2025 01:13:56] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:14:17,842 INFO: 127.0.0.1 - - [02/Mar/2025 01:14:17] "GET /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:14:18,147 INFO: 127.0.0.1 - - [02/Mar/2025 01:14:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:14:18,177 INFO: 127.0.0.1 - - [02/Mar/2025 01:14:18] "[36mGET /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 01:14:18,495 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 01:14:18,495 INFO: 127.0.0.1 - - [02/Mar/2025 01:14:18] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 03:41:05,228 INFO: 192.168.10.101 - - [02/Mar/2025 03:41:05] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 03:41:05,255 INFO: 192.168.10.101 - - [02/Mar/2025 03:41:05] "GET /register HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 03:41:18,096 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://192.168.10.101/HNAP1/, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 03:41:18,100 INFO: 192.168.10.101 - - [02/Mar/2025 03:41:18] "[35m[1mGET /HNAP1/ HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 03:41:20,265 ERROR: Unhandled Exception: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand., route: http://192.168.10.101/, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 627, in match
+    raise WebsocketMismatch() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 03:41:20,267 INFO: 192.168.10.101 - - [02/Mar/2025 03:41:20] "[35m[1mGET / HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 03:57:20,994 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 03:57:20,995 INFO: 127.0.0.1 - - [02/Mar/2025 03:57:20] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 04:23:49,694 INFO:  * Detected change in 'C:\\Users\\kazut\\OneDrive\\ÉhÉLÉÖÉÅÉìÉg\\flask_ecs_test\\app\\routes\\main.py', reloading [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 04:23:49,835 INFO:  * Restarting with stat [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 04:23:52,215 WARNING:  * Debugger is active! [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 04:23:52,218 INFO:  * Debugger PIN: 124-768-062 [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:09,793 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://192.168.10.101:80 [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:09,794 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:09,795 INFO:  * Restarting with stat [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:10,245 WARNING:  * Debugger is active! [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:10,247 INFO:  * Debugger PIN: 124-768-062 [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:50,799 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:28]
+2025-03-02 06:47:50,808 INFO: 127.0.0.1 - - [02/Mar/2025 06:47:50] "GET / HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:50,856 INFO: 127.0.0.1 - - [02/Mar/2025 06:47:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:51,050 INFO: 127.0.0.1 - - [02/Mar/2025 06:47:51] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:51,360 INFO: Task retrieval route called. [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:38]
+2025-03-02 06:47:51,389 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 06:47:51,390 INFO: 127.0.0.1 - - [02/Mar/2025 06:47:51] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:51,463 INFO: Tasks retrieved at Tokyo time: 2025-03-02T06:47:51.463948+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:49]
+2025-03-02 06:47:51,464 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png'}] [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:50]
+2025-03-02 06:47:51,464 INFO: 127.0.0.1 - - [02/Mar/2025 06:47:51] "GET /todos HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:47:51,630 INFO: 127.0.0.1 - - [02/Mar/2025 06:47:51] "[36mGET /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:00,179 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:00] "GET /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:00,471 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:00,502 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:00] "[36mGET /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:00,834 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 06:48:00,836 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:00] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:11,582 DEBUG: Received JSON data: {'task': 'test', 'priority': '1', 'due_date': '2025-03-01', 'tags': 'a'} [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:193]
+2025-03-02 06:48:11,583 DEBUG: Task: test, Priority: 1, Due date: 2025-03-01, Tags: a, Image: /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:211]
+2025-03-02 06:48:11,591 INFO: Task edited: test. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:232]
+2025-03-02 06:48:11,592 DEBUG: Todo priority: 1 [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-02 06:48:11,592 DEBUG: Todo due_date: 2025-03-01 [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-02 06:48:11,592 DEBUG: Todo tags: a [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-02 06:48:11,593 DEBUG: Todo image_path: /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-02 06:48:11,593 DEBUG: Generated response: {'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png'} [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-02 06:48:11,593 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:11] "PUT /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:11,912 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:28]
+2025-03-02 06:48:11,914 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:11] "GET / HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:11,934 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:12,153 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:12] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:12,467 INFO: Task retrieval route called. [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:38]
+2025-03-02 06:48:12,469 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 06:48:12,469 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:12] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:12,469 INFO: Tasks retrieved at Tokyo time: 2025-03-02T06:48:12.469558+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:49]
+2025-03-02 06:48:12,469 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png'}] [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:50]
+2025-03-02 06:48:12,470 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:12] "GET /todos HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 06:48:12,735 INFO: 127.0.0.1 - - [02/Mar/2025 06:48:12] "[36mGET /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:07:03,397 INFO:  * Detected change in 'C:\\Users\\kazut\\OneDrive\\ÉhÉLÉÖÉÅÉìÉg\\flask_ecs_test\\app\\routes\\tasks.py', reloading [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:07:03,654 INFO:  * Restarting with stat [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:07:06,045 WARNING:  * Debugger is active! [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:07:06,048 INFO:  * Debugger PIN: 124-768-062 [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:37,705 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:28]
+2025-03-02 18:46:37,713 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:37] "GET / HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:37,830 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:37] "GET /static/styles.css HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:37,960 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:37] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:38,266 INFO: Task retrieval route called. [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:38]
+2025-03-02 18:46:38,315 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 18:46:38,315 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:38] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:38,354 INFO: Tasks retrieved at Tokyo time: 2025-03-02T18:46:38.354783+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:49]
+2025-03-02 18:46:38,354 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png'}] [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:50]
+2025-03-02 18:46:38,355 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:38] "GET /todos HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:38,536 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:38] "[36mGET /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:43,253 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:43] "GET /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:43,560 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:43,568 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:43] "[36mGET /static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:43,894 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 18:46:43,895 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:43] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:55,282 INFO: Image file deleted: C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\..\static/uploads/153ccb9f-063a-4518-815b-5b516500670c_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:306]
+2025-03-02 18:46:55,284 INFO: Image deleted for task: test. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:310]
+2025-03-02 18:46:55,284 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:55] "POST /todos/1/delete_image HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:46:59,686 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 18:46:59,686 INFO: 127.0.0.1 - - [02/Mar/2025 18:46:59] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:01,370 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:28]
+2025-03-02 18:47:01,371 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:01] "GET / HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:01,384 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:01,696 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:01] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:02,010 INFO: Task retrieval route called. [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:38]
+2025-03-02 18:47:02,010 INFO: Tasks retrieved at Tokyo time: 2025-03-02T18:47:02.010691+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:49]
+2025-03-02 18:47:02,012 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': None}] [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:50]
+2025-03-02 18:47:02,012 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:02] "GET /todos HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:02,014 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 18:47:02,015 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:02] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:04,981 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:04] "GET /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:05,297 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:05] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:05,624 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 18:47:05,625 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:05] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:11,984 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 18:47:11,985 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:11] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:13,722 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:13] "GET /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:14,036 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:14,365 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 18:47:14,366 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:14] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:21,335 DEBUG: Uploaded new image path: /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:209]
+2025-03-02 18:47:21,336 DEBUG: Task: test, Priority: 1, Due date: 2025-03-01, Tags: a, Image: /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:211]
+2025-03-02 18:47:21,340 INFO: Task edited: test. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:232]
+2025-03-02 18:47:21,340 DEBUG: Todo priority: 1 [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-02 18:47:21,341 DEBUG: Todo due_date: 2025-03-01 [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-02 18:47:21,341 DEBUG: Todo tags: a [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-02 18:47:21,341 DEBUG: Todo image_path: /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-02 18:47:21,342 DEBUG: Generated response: {'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'} [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-02 18:47:21,342 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:21] "POST /todos/1 HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:21,661 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:28]
+2025-03-02 18:47:21,662 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:21] "GET / HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:21,677 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:21,920 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:21] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:22,243 INFO: Task retrieval route called. [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:38]
+2025-03-02 18:47:22,244 INFO: Tasks retrieved at Tokyo time: 2025-03-02T18:47:22.244058+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:49]
+2025-03-02 18:47:22,245 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}] [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\routes\main.py:50]
+2025-03-02 18:47:22,245 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:22] "GET /todos HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:22,255 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
+2025-03-02 18:47:22,256 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:22] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-02 18:47:22,492 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:22] "GET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]

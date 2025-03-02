@@ -15,5 +15,5 @@ class Todo(db.Model):
     priority = db.Column(db.Integer, default=1)
     due_date = db.Column(db.Date, nullable=True)
     tags = db.Column(db.String(200), nullable=True)
+    image_path = db.Column(db.String(500), nullable=True)  # 画像ファイルパスを保存するフィールド
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
