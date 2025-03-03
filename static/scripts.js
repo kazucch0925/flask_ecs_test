@@ -39,17 +39,30 @@ window.onclick = function(event) {
 
 // トースト通知を表示する関数
 function showToast(message, type) {
-    const toastContainer = document.getElementById('toastContainer');
+    let toastContainer = document.getElementById('toastContainer');
+    if (!toastContainer) {
+        // コンテナがなければ作成
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toastContainer';
+        document.body.appendChild(toastContainer);
+    }
+    
     const toast = document.createElement('div');
-    toast.className = `toast ${type}`;
+    toast.className = `toast ${type || 'info'}`;
     toast.textContent = message;
     toastContainer.appendChild(toast);
-    setTimeout(() => toast.classList.add('show'), 100);
+    
+    // アニメーションのためにタイミングをずらす
+    setTimeout(() => toast.classList.add('show'), 10);
 
     // 5秒後にトーストを削除
     setTimeout(() => {
         toast.classList.remove('show');
-        setTimeout(() => toastContainer.removeChild(toast), 500);
+        setTimeout(() => {
+            if (toastContainer.contains(toast)) {
+                toastContainer.removeChild(toast);
+            }
+        }, 500);
     }, 5000);
 }
 
@@ -282,7 +295,7 @@ function deleteTask(id) {
     .then(response => {
         if (response.ok) {
             fetchTodos();
-	    showToast('タスクが正常に削除されました。', 'seccess');
+	    showToast('タスクが正常に削除されました。', 'success');
         } else {
             return response.text().then(text => {
                 console.log('Response text:', text);
@@ -327,4 +340,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // 削除ボタンのイベントリスナーを追加
     const deleteButton = document.getElementById('deleteSelectedTasks');
     deleteButton.onclick = deleteSelectedTasks;
+    
+    // 検索機能のイベントリスナーを追加
+    const searchButton = document.getElementById('searchButton');
+    const searchInput = document.getElementById('searchInput');
+    
+    searchButton.addEventListener('click', function() {
+        const searchQuery = searchInput.value.trim();
+        fetchTodos(searchQuery);
+    });
+    
+    // Enterキーでも検索できるようにする
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const searchQuery = searchInput.value.trim();
+            fetchTodos(searchQuery);
+        }
+    });
 });

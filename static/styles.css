@@ -1,394 +1,653 @@
-/* styles.css */
+/* Modern Todo App Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --secondary-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #3b82f6;
+    --light-bg: #f3f4f6;
+    --dark-bg: #1f2937;
+    --card-bg: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-sm: 0.25rem;
+    --radius: 0.5rem;
+    --radius-lg: 0.75rem;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
 }
 
 /* ナビゲーションバーのスタイル */
 .navbar {
-    background-color: #2c3e50;
-    color: white;
-    padding: 10px;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .navbar span {
-    font-size: 24px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
 }
 
 .nav-buttons {
     display: flex;
-    gap: 10px;
+    gap: 0.75rem;
 }
 
 .nav-buttons button, .nav-buttons a {
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 5px 15px;
+    padding: 0.5rem 1rem;
     text-decoration: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: var(--radius);
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .nav-buttons a {
-    background-color: #e74c3c; /* ログアウトボタンのスタイルは赤 */
+    background-color: var(--danger-color);
 }
 
 .nav-buttons button:hover, .nav-buttons a:hover {
-    opacity: 0.8;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 .content {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 /* 入力フォームのスタイル */
 .form {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .form-section {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 1.25rem;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
 }
 
 .form-group input {
     width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .form-group button {
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+    width: 100%;
 }
 
 .form-group button:hover {
-    opacity: 0.8;
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 /* 検索ボックスのスタイル */
 .search-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    position: relative;
 }
 
 .search-group input {
     flex-grow: 1;
-    padding: 8px 12px;  /* パディングを少し調整 */
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    height: 38px; /* 高さを38pxに設定 */
-    box-sizing: border-box; /* ボックスサイジングをborder-boxに設定 */
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    height: 3rem;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 0.75rem center;
+    background-size: 1.25rem;
+}
+
+.search-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .search-group button {
-    padding: 8px 20px; /* ボタンのパディングを調整 */
-    background-color: #3498db;
+    padding: 0 1.5rem;
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--radius);
     cursor: pointer;
-    height: 38px; /* ボタンの高さを38pxに設定 */
-    box-sizing: border-box; /* ボックスサイジングをborder-boxに設定 */
+    height: 3rem;
+    box-sizing: border-box;
+    font-weight: 500;
+    transition: var(--transition);
 }
 
 .search-group button:hover {
-    opacity: 0.8;
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
-
-
-
-
 /* ToDoリストテーブルのスタイル */
 .todo-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    border: 1px solid #ddd;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1.5rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
 }
 
 .todo-table th {
-    background-color: #f2f2f2;
-    padding: 10px;
-    font-weight: bold;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    font-weight: 600;
     text-align: left;
-    border: 1px solid #ddd;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.todo-table th:first-child {
+    width: 50px;
+    text-align: center;
 }
 
 .todo-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.todo-table tbody tr {
+    background-color: var(--card-bg);
+    transition: var(--transition);
+}
+
+.todo-table tbody tr:last-child td {
+    border-bottom: none;
 }
 
 .todo-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: rgba(243, 244, 246, 0.5);
 }
 
 .todo-table tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: rgba(243, 244, 246, 0.8);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 
 .todo-table .actions {
     display: flex;
-    gap: 10px;
+    gap: 0.5rem;
+    justify-content: flex-end;
 }
 
 .todo-table .actions a {
-    color: #3498db;
+    color: var(--text-primary);
     cursor: pointer;
-    padding: 5px 10px;
-    border: 1px solid #3498db;
-    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    margin-right: 5px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.todo-table .actions a:first-child {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.todo-table .actions a:last-child {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 .todo-table .actions a:hover {
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
-    text-decoration: none;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.todo-table .actions a:first-child:hover {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
 }
 
 /* モーダルウィンドウのスタイル */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 5px;
+    background-color: var(--card-bg);
+    margin: 10% auto;
+    padding: 2rem;
+    border: none;
+    width: 90%;
+    max-width: 600px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(0);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .close {
-    color: #aaa;
+    color: var(--text-light);
     float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: var(--transition);
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: var(--text-primary);
     text-decoration: none;
     cursor: pointer;
+    transform: rotate(90deg);
 }
 
 /* プルダウンメニューのスタイル */
 .form-group select {
-    border: 1px solid #333; /* 通常時の枠線を黒色に設定 */
-    /* その他のスタイル設定は維持 */
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--card-bg);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    transition: var(--transition);
 }
 
 .form-group select:focus {
-    border-color: #333; /* フォーカス時も枠線を黒色に */
-    box-shadow: none; /* フォーカス時のシャドウを削除 */
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 /* ログインフォームのスタイル */
 .login-container, .register-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    margin: 5rem auto;
+    padding: 2.5rem;
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .login-container h1, .register-container h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 .login-container .form-group, .register-container .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 1.5rem;
 }
 
 .login-container .form-group label, .register-container .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
 }
 
 .login-container .form-group input, .register-container .form-group input {
     width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.login-container .form-group input:focus, .register-container .form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .login-container .form-group button, .register-container .form-group button {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 0.75rem;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
 }
 
 .login-container .form-group button:hover, .register-container .form-group button:hover {
-    opacity: 0.8;
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 .login-container a, .register-container a {
     display: block;
     text-align: center;
-    margin-top: 10px;
-    color: #4CAF50;
+    margin-top: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: var(--transition);
 }
 
 .login-container a:hover, .register-container a:hover {
-    text-decoration: underline;
+    color: var(--primary-hover);
 }
 
 /* エラーメッセージのスタイル */
 .error-message {
-    color: red;
-    margin-bottom: 20px;
+    color: var(--danger-color);
+    margin-bottom: 1.5rem;
     text-align: center;
-    font-weight: bold;
+    font-weight: 500;
+    padding: 0.75rem;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--danger-color);
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
 }
 
 /* トースト通知のスタイル */
 #toastContainer {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 2rem;
+    right: 2rem;
     z-index: 9999;
-    max-width: 300px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .toast {
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.toast::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .toast.show {
     opacity: 1;
+    transform: translateX(0);
 }
 
 /* エラートースト */
 .toast.error {
-    background-color: #d9534f; /* レッド */
+    border-color: var(--danger-color);
+}
+
+.toast.error::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ef4444'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 /* 警告トースト */
 .toast.warning {
-    background-color: #f0ad4e; /* イエロー */
+    border-color: var(--warning-color);
+}
+
+.toast.warning::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23f59e0b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 /* 成功トースト */
 .toast.success {
-    background-color: #5cb85c; /* グリーン */
+    border-color: var(--secondary-color);
+}
+
+.toast.success::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2310b981'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 /* その他トースト */
 .toast.info {
-    background-color: #5bc0de; /* ブルー */
+    border-color: var(--info-color);
+}
+
+.toast.info::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%233b82f6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 /* 画像関連のスタイル */
 .image-cell {
     text-align: center;
-    width: 100px;
+    width: 120px;
 }
 
 .task-image {
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 100px;
+    max-height: 100px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: transform 0.2s;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    object-fit: cover;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--border-color);
 }
 
 .task-image:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: var(--shadow);
+    border-color: var(--primary-color);
 }
 
 .image-preview {
-    margin-top: 10px;
+    margin-top: 1rem;
     text-align: center;
+    padding: 1rem;
+    background-color: rgba(243, 244, 246, 0.5);
+    border-radius: var(--radius);
+    border: 1px dashed var(--border-color);
 }
 
 .preview-image {
-    max-width: 200px;
-    max-height: 200px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    object-fit: contain;
 }
 
 .current-image-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.current-image-container p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
 }
 
 .delete-image-btn {
-    background-color: #e74c3c;
+    background-color: var(--danger-color);
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.2s;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.delete-image-btn::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'%3E%3C/path%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .delete-image-btn:hover {
-    background-color: #c0392b;
+    background-color: var(--danger-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 /* 画像モーダルのスタイル */
@@ -401,29 +660,52 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
     align-items: center;
     justify-content: center;
+    animation: fadeIn 0.3s ease;
 }
 
 .full-image {
     max-width: 90%;
     max-height: 90%;
-    border-radius: 4px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .close-image-modal {
     position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
+    top: 1.5rem;
+    right: 2rem;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 300;
     cursor: pointer;
+    transition: var(--transition);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .close-image-modal:hover,
 .close-image-modal:focus {
-    color: #bbb;
-    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
 }

@@ -528,3 +528,400 @@
  [in C:\Users\kazut\OneDrive\ÉhÉLÉÖÉÅÉìÉg\flask_ecs_test\app\__init__.py:46]
 2025-03-02 18:47:22,256 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:22] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
 2025-03-02 18:47:22,492 INFO: 127.0.0.1 - - [02/Mar/2025 18:47:22] "GET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1" 200 - [in C:\Users\kazut\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:04:32,440 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://171.0.0.37:80 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:04:32,440 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:04:32,450 INFO:  * Restarting with stat [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:04:34,585 WARNING:  * Debugger is active! [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:04:34,606 INFO:  * Debugger PIN: 131-939-556 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:05:06,309 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/80, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:05:06,310 INFO: 127.0.0.1 - - [03/Mar/2025 18:05:06] "[35m[1mGET /80 HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:05:06,388 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:05:06,389 INFO: 127.0.0.1 - - [03/Mar/2025 18:05:06] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:05:44,977 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://171.0.0.37:80 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:05:44,978 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:05:44,989 INFO:  * Restarting with stat [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:05:47,492 WARNING:  * Debugger is active! [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:05:47,526 INFO:  * Debugger PIN: 131-939-556 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:06:44,235 INFO: 127.0.0.1 - - [03/Mar/2025 18:06:44] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:06:44,340 INFO: 127.0.0.1 - - [03/Mar/2025 18:06:44] "GET /register HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:06:44,469 INFO: 127.0.0.1 - - [03/Mar/2025 18:06:44] "GET /static/styles.css HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:06:45,128 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:06:45,129 INFO: 127.0.0.1 - - [03/Mar/2025 18:06:45] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:07:05,878 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/80, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:07:05,881 INFO: 127.0.0.1 - - [03/Mar/2025 18:07:05] "[35m[1mGET /80 HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:07:05,975 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:07:05,977 INFO: 127.0.0.1 - - [03/Mar/2025 18:07:05] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:07:43,927 INFO: 127.0.0.1 - - [03/Mar/2025 18:07:43] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:07:43,952 INFO: 127.0.0.1 - - [03/Mar/2025 18:07:43] "GET /register HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:07:44,130 INFO: 127.0.0.1 - - [03/Mar/2025 18:07:44] "GET /static/styles.css HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:07:44,933 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:07:44,934 INFO: 127.0.0.1 - - [03/Mar/2025 18:07:44] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:31,597 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:31] "GET /login HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:31,648 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:31,875 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:11:31,877 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:31] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:39,714 WARNING: Login failed for identifier: test. User not found. Session: <SecureCookieSession {}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\auth.py:61]
+2025-03-03 18:11:39,715 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:39] "[31m[1mPOST /login HTTP/1.1[0m" 400 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:42,386 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:42] "GET /register HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:42,690 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:43,092 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:11:43,094 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:43] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:47,286 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:47] "GET /login HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:47,578 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:47,954 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:11:47,955 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:47] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:55,933 INFO: User logged in: test@mail.com. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\auth.py:69]
+2025-03-03 18:11:55,936 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:55] "POST /login HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:56,322 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:28]
+2025-03-03 18:11:56,327 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:56] "GET / HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:56,358 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:56] "GET /static/scripts.js HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:56,556 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:56,959 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:11:56,983 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:11:56,985 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:56] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:57,868 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:11:57.868025+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:11:57,868 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:11:57,869 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:57] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:11:57,895 INFO: 127.0.0.1 - - [03/Mar/2025 18:11:57] "GET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:12:42,157 INFO: Task add route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:64]
+2025-03-03 18:12:42,158 DEBUG: User ID from session: 1 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:66]
+2025-03-03 18:12:42,455 DEBUG: Uploaded image path: /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:96]
+2025-03-03 18:12:42,455 DEBUG: Task: É^ÉXÉN, Priority: 3, Due date: 2025-03-31, Tags: b, Image: /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:98]
+2025-03-03 18:12:42,505 INFO: Task added at Tokyo time: 2025-03-03T18:12:42.457132+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:121]
+2025-03-03 18:12:42,511 DEBUG: Todo priority: 3 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-03 18:12:42,512 DEBUG: Todo due_date: 2025-03-31 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-03 18:12:42,512 DEBUG: Todo tags: b [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-03 18:12:42,513 DEBUG: Todo image_path: /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-03 18:12:42,514 DEBUG: Generated response: {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'b', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-03 18:12:42,515 INFO: 127.0.0.1 - - [03/Mar/2025 18:12:42] "[35m[1mPOST /todos HTTP/1.1[0m" 201 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:12:42,554 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:12:42,558 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:12:42.558092+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:12:42,559 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'b', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:12:42,561 INFO: 127.0.0.1 - - [03/Mar/2025 18:12:42] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:12:42,916 INFO: 127.0.0.1 - - [03/Mar/2025 18:12:42] "GET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:12:53,203 INFO: 127.0.0.1 - - [03/Mar/2025 18:12:53] "GET /todos/2 HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:12:53,519 INFO: 127.0.0.1 - - [03/Mar/2025 18:12:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:12:53,580 INFO: 127.0.0.1 - - [03/Mar/2025 18:12:53] "[36mGET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:12:53,956 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:12:53,958 INFO: 127.0.0.1 - - [03/Mar/2025 18:12:53] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:04,789 DEBUG: Received JSON data: {'task': 'É^ÉXÉN', 'priority': '3', 'due_date': '2025-03-31', 'tags': 'b'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:193]
+2025-03-03 18:13:04,790 DEBUG: Task: É^ÉXÉN, Priority: 3, Due date: 2025-03-31, Tags: b, Image: /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:211]
+2025-03-03 18:13:04,798 INFO: Task edited: É^ÉXÉN. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:232]
+2025-03-03 18:13:04,801 DEBUG: Todo priority: 3 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-03 18:13:04,801 DEBUG: Todo due_date: 2025-03-31 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-03 18:13:04,801 DEBUG: Todo tags: b [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-03 18:13:04,802 DEBUG: Todo image_path: /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-03 18:13:04,802 DEBUG: Generated response: {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'b', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-03 18:13:04,803 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:04] "PUT /todos/2 HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:05,181 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:28]
+2025-03-03 18:13:05,183 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:05] "GET / HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:05,209 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:05] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:05,424 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:05] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:05,831 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:13:05,836 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:13:05.836391+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:13:05,837 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'b', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:13:05,841 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:05] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:05,858 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:13:05,859 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:05] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:06,051 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:06] "[36mGET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:06,241 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:06] "[36mGET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:07,802 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:07] "GET /todos/2 HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:08,160 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:08,161 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:08] "[36mGET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:08,559 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:13:08,560 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:08] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:11,967 DEBUG: Received JSON data: {'task': 'É^ÉXÉN', 'priority': '3', 'due_date': '2025-03-31', 'tags': 'bc'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:193]
+2025-03-03 18:13:11,968 DEBUG: Task: É^ÉXÉN, Priority: 3, Due date: 2025-03-31, Tags: bc, Image: /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:211]
+2025-03-03 18:13:11,999 INFO: Task edited: É^ÉXÉN. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:232]
+2025-03-03 18:13:12,001 DEBUG: Todo priority: 3 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-03 18:13:12,002 DEBUG: Todo due_date: 2025-03-31 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-03 18:13:12,003 DEBUG: Todo tags: bc [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-03 18:13:12,003 DEBUG: Todo image_path: /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-03 18:13:12,004 DEBUG: Generated response: {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-03 18:13:12,004 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:12] "PUT /todos/2 HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:12,398 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:28]
+2025-03-03 18:13:12,401 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:12] "GET / HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:12,428 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:12,604 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:12] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:12,974 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:13:12,977 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:13:12.977731+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:13:12,978 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:13:12,979 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:12] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:13,001 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:13:13,003 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:13] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:13,208 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:13] "[36mGET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:13,365 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:13] "[36mGET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:33,534 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:13:33,538 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:13:33.538924+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:13:33,539 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:13:33,540 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:33] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:39,944 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:13:39,947 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:13:39.947748+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:13:39,948 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:13:39,949 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:39] "GET /todos?search=te HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:41,272 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:13:41,277 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:13:41.276975+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:13:41,278 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:13:41,280 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:41] "GET /todos?search=te HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:44,715 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:13:44,718 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:13:44.718916+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:13:44,719 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:13:44,721 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:44] "GET /todos?search=É^ÉXÉN HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:47,611 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:13:47,614 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:13:47.614496+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:13:47,615 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:13:47,616 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:47] "GET /todos?search=É^ÉXÉN HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:13:57,882 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:13:57,885 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:13:57.885647+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:13:57,886 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:13:57,887 INFO: 127.0.0.1 - - [03/Mar/2025 18:13:57] "GET /todos?search=É^ÉXÉN HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:19:00,475 ERROR: Unhandled Exception: 405 Method Not Allowed: The method is not allowed for the requested URL., route: http://localhost/logout, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:19:00,477 INFO: 127.0.0.1 - - [03/Mar/2025 18:19:00] "[35m[1mGET /logout HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:19:00,559 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:19:00,560 INFO: 127.0.0.1 - - [03/Mar/2025 18:19:00] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:20:19,648 INFO: 127.0.0.1 - - [03/Mar/2025 18:20:19] "[36mGET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:20:19,648 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:20:19,649 INFO: 127.0.0.1 - - [03/Mar/2025 18:20:19] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:20:19,775 INFO: 127.0.0.1 - - [03/Mar/2025 18:20:19] "[36mGET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:26,159 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://171.0.0.37:80 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:26,159 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:26,168 INFO:  * Restarting with stat [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:27,138 WARNING:  * Debugger is active! [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:27,145 INFO:  * Debugger PIN: 131-939-556 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:43,292 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:28]
+2025-03-03 18:21:43,296 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:43] "GET / HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:43,359 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:43,486 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:43] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:43,896 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:38]
+2025-03-03 18:21:43,918 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-03 18:21:43,919 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:43] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:44,173 INFO: Tasks retrieved at Tokyo time: 2025-03-03T18:21:44.173633+09:00. Session: <SecureCookieSession {'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:49]
+2025-03-03 18:21:44,174 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:50]
+2025-03-03 18:21:44,174 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:44] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:44,191 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:44] "[36mGET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-03 18:21:44,538 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:44] "[36mGET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
