@@ -2,80 +2,352 @@ openapi: 3.0.0
 info:
   title: Todo API
   version: 1.0.0
+  description: CI/CD環境デモ用のTodo管理アプリケーションのAPI仕様
+  contact:
+    name: 開発チーム
+    email: dev@example.com
+servers:
+  - url: http://localhost:80
+    description: 開発環境
+  - url: https://api.example.com
+    description: 本番環境
 paths:
   /todos:
     get:
-      summary: Get all todos
+      summary: タスク一覧の取得
+      description: ログインユーザーのタスク一覧を取得します
       parameters:
         - in: query
           name: search
           schema:
             type: string
           required: false
-          description: Search query to filter todos by task name
+          description: タスク名でフィルタリングするための検索クエリ
       responses:
         '200':
-          description: A list of todos
+          description: タスク一覧の取得成功
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Todo'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
-      summary: Create a new todo
+      summary: 新規タスクの作成
+      description: 新しいタスクを作成します。画像のアップロードも可能です。
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/TodoInput'
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - task
+              properties:
+                task:
+                  type: string
+                  description: タスクの内容
+                priority:
+                  type: integer
+                  description: 優先度
+                  enum: [1, 2, 3]
+                  default: 1
+                due_date:
+                  type: string
+                  format: date
+                  description: タスクの期限日
+                tags:
+                  type: string
+                  description: タスクのタグ（カンマ区切り）
+                image:
+                  type: string
+                  format: binary
+                  description: タスクに関連する画像ファイル
       responses:
         '201':
-          description: Created
+          description: タスク作成成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        '400':
+          description: 不正なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /todos/{id}:
-    put:
-      summary: Update a todo by ID
+    get:
+      summary: 特定のタスクの取得
+      description: 指定されたIDのタスクを取得します
       parameters:
         - in: path
           name: id
           schema:
             type: integer
           required: true
-          description: The todo ID
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Todo'
+          description: タスクのID
       responses:
         '200':
-          description: Updated
-    delete:
-      summary: Delete a todo by ID
+          description: タスク取得成功
+          content:
+            text/html:
+              schema:
+                type: string
+                description: タスク編集画面のHTML
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: タスクが見つからない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: タスクの更新
+      description: 指定されたIDのタスクを更新します
       parameters:
         - in: path
           name: id
           schema:
             type: integer
           required: true
-          description: The todo ID
-      responses:
-        '204':
-          description: Deleted
-  /register:
-    post:
-      summary: Register a new user
+          description: タスクのID
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/TodoInput'
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - task
+              properties:
+                task:
+                  type: string
+                  description: タスクの内容
+                priority:
+                  type: integer
+                  description: 優先度
+                  enum: [1, 2, 3]
+                due_date:
+                  type: string
+                  format: date
+                  description: タスクの期限日
+                tags:
+                  type: string
+                  description: タスクのタグ（カンマ区切り）
+                image:
+                  type: string
+                  format: binary
+                  description: タスクに関連する画像ファイル
+      responses:
+        '200':
+          description: タスク更新成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        '400':
+          description: 不正なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: タスクが見つからない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: タスクの削除
+      description: 指定されたIDのタスクを削除します
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: タスクのID
+      responses:
+        '204':
+          description: タスク削除成功
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: タスクが見つからない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /todos/{id}/delete_image:
+    post:
+      summary: タスク画像の削除
+      description: 指定されたIDのタスクの画像を削除します
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: タスクのID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task:
+                  type: string
+                  description: タスクの内容（更新する場合）
+                priority:
+                  type: integer
+                  description: 優先度（更新する場合）
+                due_date:
+                  type: string
+                  format: date
+                  description: タスクの期限日（更新する場合）
+                tags:
+                  type: string
+                  description: タスクのタグ（更新する場合）
+      responses:
+        '200':
+          description: 画像削除成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Image deleted successfully"
+        '400':
+          description: 不正なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: タスクが見つからない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /register:
+    get:
+      summary: ユーザー登録フォームの表示
+      description: ユーザー登録画面を表示します
+      responses:
+        '200':
+          description: ユーザー登録フォーム表示成功
+          content:
+            text/html:
+              schema:
+                type: string
+                description: ユーザー登録画面のHTML
+    post:
+      summary: 新規ユーザー登録
+      description: 新しいユーザーを登録します
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
       responses:
         '201':
-          description: Created
+          description: ユーザー登録成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User registered successfully"
+        '400':
+          description: 不正なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /login:
+    get:
+      summary: ログインフォームの表示
+      description: ログイン画面を表示します
+      responses:
+        '200':
+          description: ログインフォーム表示成功
+          content:
+            text/html:
+              schema:
+                type: string
+                description: ログイン画面のHTML
     post:
-      summary: Login a user
+      summary: ユーザーログイン
+      description: ユーザーのログイン処理を行います
       requestBody:
         content:
           application/json:
@@ -83,52 +355,196 @@ paths:
               $ref: '#/components/schemas/Login'
       responses:
         '200':
-          description: OK
+          description: ログイン成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User logged in successfully"
+        '400':
+          description: 不正なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /logout:
     post:
-      summary: Logout a user
+      summary: ユーザーログアウト
+      description: ユーザーのログアウト処理を行います
       responses:
         '200':
-          description: OK
+          description: ログアウト成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User logged out successfully"
+                  redirect:
+                    type: string
+                    example: "/login"
+  /:
+    get:
+      summary: メインページの表示
+      description: ログイン状態に応じてメインページ、ログインページ、または登録ページを表示します
+      responses:
+        '200':
+          description: メインページ表示成功
+          content:
+            text/html:
+              schema:
+                type: string
+                description: メインページのHTML
+        '302':
+          description: リダイレクト
+          headers:
+            Location:
+              schema:
+                type: string
+              description: リダイレクト先のURL
+
 components:
   schemas:
+    TodoInput:
+      type: object
+      required:
+        - task
+      properties:
+        task:
+          type: string
+          description: "タスクの内容"
+        priority:
+          type: integer
+          description: "優先度 (1: 低, 2: 中, 3: 高)"
+          enum: [1, 2, 3]
+          default: 1
+        due_date:
+          type: string
+          format: date
+          description: "タスクの期限日"
+        tags:
+          type: string
+          description: "タスクのタグ（カンマ区切り）"
+        image_path:
+          type: string
+          description: "アップロードされた画像ファイルのパス"
+    
     Todo:
       type: object
+      required:
+        - id
+        - task
+        - created_at
+        - user_id
       properties:
         id:
           type: integer
+          description: "タスクの一意識別子"
         task:
           type: string
+          description: "タスクの内容"
         created_at:
           type: string
           format: date-time
+          description: "タスク作成日時"
         priority:
           type: integer
-          description: "Priority level (1: Low, 2: Medium, 3: High)"
+          description: "優先度 (1: 低, 2: 中, 3: 高)"
+          enum: [1, 2, 3]
+          default: 1
         due_date:
           type: string
-          format: date-time
-          description: "Due date for the task"
+          format: date
+          description: "タスクの期限日"
         tags:
           type: string
-          description: "Tags for the task (comma-separated)"
-    User:
+          description: "タスクのタグ（カンマ区切り）"
+        image_path:
+          type: string
+          description: "アップロードされた画像ファイルのパス"
+        user_id:
+          type: integer
+          description: "タスクの所有者ID"
+    
+    UserInput:
       type: object
+      required:
+        - username
+        - email
+        - password
       properties:
         username:
           type: string
+          description: "ユーザー名"
+          minLength: 3
+          maxLength: 100
         email:
           type: string
+          format: email
+          description: "メールアドレス"
         password:
           type: string
           format: password
-          description: "User's password (hashed)"
+          description: "パスワード"
+          minLength: 6
+    
+    User:
+      type: object
+      required:
+        - id
+        - username
+        - email
+        - password
+      properties:
+        id:
+          type: integer
+          description: "ユーザーの一意識別子"
+        username:
+          type: string
+          description: "ユーザー名"
+          minLength: 3
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          description: "メールアドレス"
+        password:
+          type: string
+          format: password
+          description: "ハッシュ化されたパスワード"
+    
     Login:
       type: object
+      required:
+        - identifier
+        - password
       properties:
         identifier:
           type: string
-          description: "Username or email"
+          description: "ユーザー名またはメールアドレス"
         password:
           type: string
           format: password
+          description: "パスワード"
+    
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: "エラーメッセージ"
+  
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: cookie
+      name: session
+      description: "セッションベースの認証"
+
+security:
+  - sessionAuth: []

@@ -925,3 +925,71 @@
 2025-03-03 18:21:44,174 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:44] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
 2025-03-03 18:21:44,191 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:44] "[36mGET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
 2025-03-03 18:21:44,538 INFO: 127.0.0.1 - - [03/Mar/2025 18:21:44] "[36mGET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:13:09,282 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://171.0.0.45:80 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:13:09,283 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:13:09,301 INFO:  * Restarting with stat [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:13:12,441 WARNING:  * Debugger is active! [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:13:12,474 INFO:  * Debugger PIN: 131-939-556 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:13:20,436 INFO: 127.0.0.1 - - [04/Mar/2025 17:13:20] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:13:20,507 INFO: 127.0.0.1 - - [04/Mar/2025 17:13:20] "GET /register HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:13:20,613 INFO: 127.0.0.1 - - [04/Mar/2025 17:13:20] "GET /static/styles.css HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:13:21,314 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://127.0.0.1/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-04 17:13:21,315 INFO: 127.0.0.1 - - [04/Mar/2025 17:13:21] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:23:47,455 INFO: 127.0.0.1 - - [04/Mar/2025 17:23:47] "GET /register HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:23:47,522 INFO: 127.0.0.1 - - [04/Mar/2025 17:23:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:23:47,622 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://127.0.0.1/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-04 17:23:47,627 INFO: 127.0.0.1 - - [04/Mar/2025 17:23:47] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:24:17,604 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://171.0.0.45:80 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:24:17,605 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:24:17,620 INFO:  * Restarting with stat [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:24:23,931 WARNING:  * Debugger is active! [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:24:23,997 INFO:  * Debugger PIN: 131-939-556 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:24:27,069 INFO: 127.0.0.1 - - [04/Mar/2025 17:24:27] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:24:27,176 INFO: 127.0.0.1 - - [04/Mar/2025 17:24:27] "GET /register HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:24:27,309 INFO: 127.0.0.1 - - [04/Mar/2025 17:24:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 17:24:27,487 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://127.0.0.1/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-04 17:24:27,492 INFO: 127.0.0.1 - - [04/Mar/2025 17:24:27] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 18:36:59,895 INFO: 192.168.201.221 - - [04/Mar/2025 18:36:59] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-04 18:38:11,828 INFO: 192.168.201.226 - - [04/Mar/2025 18:38:11] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
