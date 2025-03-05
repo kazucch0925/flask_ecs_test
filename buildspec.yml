@@ -37,9 +37,18 @@ phases:
       - echo Installing project dependencies # プロジェクトの依存関係をインストールすることを示すメッセージを表示
       - pip install -r ./generated/requirements.txt # 生成されたコードの依存関係をインストール
       - pip install -r ./generated/test-requirements.txt # テストに必要な依存関係をインストール
-      - echo Running tests # テストの実行を示すメッセージを表示
-      - coverage run -m pytest ./generated --html=report.html --self-contained-html # カバレッジを計測しつつテストを実行し、HTML形式のレポートを生成
-      - coverage html -d coverage_html_report # カバレッジレポートをHTML形式で出力
+      - echo Installing application dependencies # アプリケーションの依存関係をインストールすることを示すメッセージを表示
+      - pip install -r requirements.txt # アプリケーションの依存関係をインストール
+      
+      - echo Running API tests # APIテストの実行を示すメッセージを表示
+      - coverage run -m pytest ./generated --html=api_test_report.html --self-contained-html # カバレッジを計測しつつAPIテストを実行し、HTML形式のレポートを生成
+      - coverage report -m # カバレッジレポートをコンソールに表示
+      - coverage html -d api_coverage_report # APIテストのカバレッジレポートをHTML形式で出力
+      
+      - echo Running application unit tests # アプリケーションユニットテストの実行を示すメッセージを表示
+      - coverage run --append -m pytest tests/ --html=app_test_report.html --self-contained-html # カバレッジを計測しつつアプリケーションテストを実行し、HTML形式のレポートを生成（--appendで前回の結果に追加）
+      - coverage report -m # 統合されたカバレッジレポートをコンソールに表示
+      - coverage html -d combined_coverage_report # 統合されたカバレッジレポートをHTML形式で出力
       - echo Building the Docker image... # Dockerイメージのビルドを示すメッセージを表示
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG . # Dockerイメージをビルド
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # イメージにタグを付ける
@@ -54,6 +63,8 @@ phases:
 artifacts:
   files:
     - imagedefinitions.json # 出力されたイメージ定義JSONファイルをアーティファクトとして保存
-    - report.html # テストレポートをアーティファクトとして保存
-    - coverage_html_report/** # カバレッジレポートのHTMLファイルをアーティファクトとして保存
+    - api_test_report.html # APIテストレポートをアーティファクトとして保存
+    - app_test_report.html # アプリケーションテストレポートをアーティファクトとして保存
+    - api_coverage_report/** # APIテストのカバレッジレポートをアーティファクトとして保存
+    - combined_coverage_report/** # 統合されたカバレッジレポートをアーティファクトとして保存
   discard-paths: yes # パスを破棄してルートに保存
