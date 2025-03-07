@@ -14,7 +14,9 @@ phases:
       - echo "Installing system dependencies" # システムの依存関係をインストールすることを示すメッセージを表示
       - npm install -g @openapitools/openapi-generator-cli # OpenAPI Generator CLIをグローバルにインストール
       - pip install --user pytest pytest-html coverage # pytest, pytest-html, coverageをユーザーのホームディレクトリにインストール
-      - pip install --user flake8 pylint bandit safety trivy-client locust coverage-badge jinja2 pytest-flask selenium webdriver-manager
+      - pip install --user flake8 pylint bandit safety locust coverage-badge jinja2 pytest-flask selenium webdriver-manager
+      - echo "Installing Trivy..." # Trivyのインストール
+      - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.48.3 || true
       - export PATH=$PATH:$HOME/.local/bin # ユーザーのローカルバイナリディレクトリをPATHに追加
       - export PATH=$PATH:$(npm bin -g) # グローバルにインストールされたnpmパッケージの実行パスをPATHに追加
 
