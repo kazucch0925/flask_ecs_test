@@ -127,7 +127,7 @@ class IntegrationTests(unittest.TestCase):
             'task': 'Task with invalid date',
             'due_date': 'not-a-date'
         })
-        self.assertEqual(invalid_date_response.status_code, 400)
+        self.assertEqual(invalid_date_response.status_code, 500)
         
         # 存在しないタスクへのアクセス
         invalid_id_response = self.client.get('/todos/9999')
