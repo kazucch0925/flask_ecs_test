@@ -7,6 +7,8 @@ class TodoUser(HttpUser):
     Todoアプリケーションのパフォーマンステスト用ユーザークラス
     様々なユーザー行動をシミュレートします
     """
+    # テスト対象のホスト
+    host = "http://localhost:80"
     # リクエスト間の待機時間（1〜3秒）
     wait_time = between(1, 3)
     
@@ -120,6 +122,7 @@ class AdminUser(HttpUser):
     管理者ユーザーをシミュレート
     より多くのデータを扱う操作を実行
     """
+    host = "http://localhost:80"
     wait_time = between(2, 5)
     
     def on_start(self):

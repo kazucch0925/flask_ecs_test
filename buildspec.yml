@@ -91,7 +91,7 @@ phases:
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json # イメージ定義をJSONファイルに出力
 
 reports:
-  coverage-reports:
+  flask_ecs_test-coverage-reports:
     files:
       - combined_coverage_report/index.html
     file-format: HTMLCOV
