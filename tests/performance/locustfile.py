@@ -8,7 +8,7 @@ class TodoUser(HttpUser):
     様々なユーザー行動をシミュレートします
     """
     # テスト対象のホスト
-    host = "http://localhost:80"
+    host = "https://todolist-sample.com"
     # リクエスト間の待機時間（1〜3秒）
     wait_time = between(1, 3)
     
