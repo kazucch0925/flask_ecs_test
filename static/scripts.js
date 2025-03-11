@@ -95,9 +95,21 @@ document.getElementById('image').addEventListener('change', function(event) {
 });
 
 function fetchTodos(search = '') {
+    // 検索実行中の状態表示
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const todoTable = document.querySelector('.todo-table');
+    const searchResultsInfo = document.getElementById('searchResultsInfo');
+    const noResults = document.getElementById('noResults');
+    
+    // 検索前の状態をリセット
+    loadingSpinner.style.display = 'block';
+    todoTable.style.display = 'none';
+    searchResultsInfo.style.display = 'none';
+    noResults.style.display = 'none';
+    
     let url = '/todos';
     if (search) {
-        url += `?search=${search}`;
+        url += `?search=${encodeURIComponent(search)}`;
     }
 
     fetch(url)
@@ -115,6 +127,28 @@ function fetchTodos(search = '') {
             console.log('Fetched todos:', data);
             const todoListElement = document.getElementById('todoList');
             todoListElement.innerHTML = '';
+            
+            // 検索結果の件数を表示
+            const resultCount = document.getElementById('resultCount');
+            resultCount.textContent = data.length;
+            
+            // 検索キーワードを表示
+            const searchQueryDisplay = document.getElementById('searchQueryDisplay');
+            searchQueryDisplay.textContent = search || 'すべて';
+            
+            // 検索結果情報を表示
+            searchResultsInfo.style.display = 'flex';
+            
+            if (data.length === 0) {
+                // 検索結果が0件の場合
+                todoTable.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            // 検索結果がある場合はテーブルを表示
+            todoTable.style.display = 'table';
+            
             const priorityLabels = {1: '低', 2: '中', 3: '高'};
             data.forEach(todo => {
                 console.log(todo); // デバッグ用
@@ -165,13 +199,19 @@ function fetchTodos(search = '') {
         })
         .catch(error => {
             console.error('Error fetching todos:', error);
-            const errorMessageElement = document.querySelector('.error-message');
-            if (errorMessageElement) {
-                errorMessageElement.textContent = `タスクの取得に失敗しました: ${error.message}`;
-                errorMessageElement.style.display = 'block';
-            }
+            showToast(`タスクの取得に失敗しました: ${error.message}`, 'error');
+            
+            // エラー時も検索結果情報を表示
+            const searchQueryDisplay = document.getElementById('searchQueryDisplay');
+            searchQueryDisplay.textContent = search || 'すべて';
+            document.getElementById('resultCount').textContent = '0';
+            searchResultsInfo.style.display = 'flex';
+            todoTable.style.display = 'none';
+            noResults.style.display = 'block';
         })
         .finally(() => {
+            // ローディングスピナーを非表示
+            loadingSpinner.style.display = 'none';
             updateCheckboxes();
         });
 }

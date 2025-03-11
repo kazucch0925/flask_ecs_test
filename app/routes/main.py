@@ -32,25 +32,4 @@ def index():
     else:
         return redirect(url_for('auth.register'))
 
-@main_bp.route('/todos', methods=['GET'])
-def get_todos():
-    try:
-        current_app.logger.info('Task retrieval route called.')
-        if 'logged_in' in session and session['logged_in']:
-            user_id = session.get('user_id')
-            if user_id is None:
-                current_app.logger.error('Error: user_id not found in session. Session: %s', session)
-                return jsonify({"message": "user_id not found in session"}), 401
-
-            tokyo_tz = pytz.timezone('Asia/Tokyo')
-
-            todo_list = Todo.query.filter_by(user_id=user_id).all()
-            todos = [get_todo_response(todo) for todo in todo_list]
-            current_app.logger.info('Tasks retrieved at Tokyo time: %s. Session: %s', datetime.now(tokyo_tz).isoformat(), session)
-            current_app.logger.info('Todos: %s', todos)
-            return jsonify(todos)
-        current_app.logger.error('Unauthorized access attempt. Session: %s', session)
-        return jsonify({"message": "Unauthorized"}), 401
-    except Exception as e:
-        current_app.logger.error('Error retrieving todos: %s', str(e))
-        return jsonify({"message": "An error occurred while retrieving todos"}), 500
+# /todosのGETルートはapp/routes/tasks.pyに移動しました
