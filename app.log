@@ -1220,3 +1220,190 @@
 2025-03-11 12:37:06,541 INFO: 192.168.201.99 - - [11/Mar/2025 12:37:06] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
 2025-03-11 12:43:09,089 INFO: 192.168.201.88 - - [11/Mar/2025 12:43:09] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
 2025-03-11 13:14:32,874 INFO: 192.168.201.67 - - [11/Mar/2025 13:14:32] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:39,102 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://171.0.1.37:80 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:39,103 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:39,111 INFO:  * Restarting with stat [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:41,728 WARNING:  * Debugger is active! [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:41,761 INFO:  * Debugger PIN: 131-939-556 [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:50,470 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:50] "[32mGET / HTTP/1.1[0m" 302 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:50,527 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:50] "GET /login HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:50,683 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:51,108 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-11 18:28:51,110 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:51] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:52,656 INFO: User logged in: test@mail.com. Session: <SecureCookieSession {'registered': True, 'logged_in': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\auth.py:69]
+2025-03-11 18:28:52,659 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:52] "POST /login HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:53,037 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:28]
+2025-03-11 18:28:53,042 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:53] "GET / HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:53,074 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:53,247 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:53] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:53,655 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-11 18:28:53,658 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:53] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:53,674 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:131]
+2025-03-11 18:28:54,518 DEBUG: Search query:  [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:145]
+2025-03-11 18:28:54,519 DEBUG: Processing todo: <Todo 1> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:147]
+2025-03-11 18:28:54,520 DEBUG: Processing todo: <Todo 2> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:147]
+2025-03-11 18:28:54,521 DEBUG: Todo priority: 1 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-11 18:28:54,522 DEBUG: Todo due_date: 2025-03-01 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-11 18:28:54,523 DEBUG: Todo tags: a [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-11 18:28:54,523 DEBUG: Todo image_path: /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-11 18:28:54,523 DEBUG: Generated response: {'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-11 18:28:54,524 DEBUG: Todo priority: 3 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-11 18:28:54,524 DEBUG: Todo due_date: 2025-03-31 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-11 18:28:54,525 DEBUG: Todo tags: bc [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-11 18:28:54,526 DEBUG: Todo image_path: /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-11 18:28:54,527 DEBUG: Generated response: {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-11 18:28:54,529 DEBUG: Generated todos response: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:150]
+2025-03-11 18:28:54,530 INFO: Tasks retrieved at Tokyo time: 2025-03-11T18:28:54.530246+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:151]
+2025-03-11 18:28:54,530 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:152]
+2025-03-11 18:28:54,533 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:54] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:54,563 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:54] "[36mGET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:54,896 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:54] "[36mGET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:58,824 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:58] "GET /todos/2 HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:58,868 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:59,051 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:59] "[36mGET /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:28:59,412 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-11 18:28:59,415 INFO: 127.0.0.1 - - [11/Mar/2025 18:28:59] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:01,853 DEBUG: Received JSON data: {'task': 'É^ÉXÉN', 'priority': '3', 'due_date': '2025-03-31', 'tags': 'bc'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:193]
+2025-03-11 18:29:01,854 DEBUG: Task: É^ÉXÉN, Priority: 3, Due date: 2025-03-31, Tags: bc, Image: /static/uploads/bada42f5-7263-4237-aa72-4367262b41b2_CICD_.jpg [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:211]
+2025-03-11 18:29:01,916 INFO: Task edited: É^ÉXÉN. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:235]
+2025-03-11 18:29:01,919 DEBUG: Todo priority: 1 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-11 18:29:01,920 DEBUG: Todo due_date: 2025-03-31 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-11 18:29:01,921 DEBUG: Todo tags: bc [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-11 18:29:01,921 DEBUG: Todo image_path: /static/uploads/white_image.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-11 18:29:01,922 DEBUG: Generated response: {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 1, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/white_image.png'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-11 18:29:01,923 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:01] "PUT /todos/2 HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:02,313 INFO: Accessed index page. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\main.py:28]
+2025-03-11 18:29:02,316 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:02] "GET / HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:02,347 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:02,528 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:02] "[36mGET /static/scripts.js HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:02,925 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:131]
+2025-03-11 18:29:02,928 DEBUG: Search query:  [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:145]
+2025-03-11 18:29:02,928 DEBUG: Processing todo: <Todo 1> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:147]
+2025-03-11 18:29:02,929 DEBUG: Processing todo: <Todo 2> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:147]
+2025-03-11 18:29:02,930 DEBUG: Todo priority: 1 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-11 18:29:02,931 DEBUG: Todo due_date: 2025-03-01 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-11 18:29:02,932 DEBUG: Todo tags: a [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-11 18:29:02,933 DEBUG: Todo image_path: /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-11 18:29:02,934 DEBUG: Generated response: {'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-11 18:29:02,936 DEBUG: Todo priority: 1 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-11 18:29:02,937 DEBUG: Todo due_date: 2025-03-31 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-11 18:29:02,938 DEBUG: Todo tags: bc [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-11 18:29:02,939 DEBUG: Todo image_path: /static/uploads/white_image.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-11 18:29:02,940 DEBUG: Generated response: {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 1, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/white_image.png'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-11 18:29:02,941 DEBUG: Generated todos response: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 1, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/white_image.png'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:150]
+2025-03-11 18:29:02,942 INFO: Tasks retrieved at Tokyo time: 2025-03-11T18:29:02.942291+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:151]
+2025-03-11 18:29:02,943 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'É^ÉXÉN', 'created_at': '2025-03-03T18:12:42.457132+09:00', 'priority': 1, 'due_date': '2025-03-31', 'tags': 'bc', 'image_path': '/static/uploads/white_image.png'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:152]
+2025-03-11 18:29:02,944 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:02] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:02,960 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-11 18:29:02,971 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:02] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:03,133 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:03] "GET /static/uploads/white_image.png HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:03,314 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:03] "[36mGET /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png HTTP/1.1[0m" 304 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:16,814 INFO: Task deleted: É^ÉXÉN. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:167]
+2025-03-11 18:29:16,815 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:16] "[35m[1mDELETE /todos/2 HTTP/1.1[0m" 204 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:16,882 ERROR: Unhandled Exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again., route: http://localhost/favicon.ico, traceback:   File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+ [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\__init__.py:46]
+2025-03-11 18:29:16,885 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:16] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:17,050 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:131]
+2025-03-11 18:29:17,052 DEBUG: Search query:  [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:145]
+2025-03-11 18:29:17,052 DEBUG: Processing todo: <Todo 1> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:147]
+2025-03-11 18:29:17,053 DEBUG: Todo priority: 1 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-11 18:29:17,053 DEBUG: Todo due_date: 2025-03-01 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-11 18:29:17,054 DEBUG: Todo tags: a [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-11 18:29:17,054 DEBUG: Todo image_path: /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-11 18:29:17,055 DEBUG: Generated response: {'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-11 18:29:17,056 DEBUG: Generated todos response: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:150]
+2025-03-11 18:29:17,056 INFO: Tasks retrieved at Tokyo time: 2025-03-11T18:29:17.056959+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:151]
+2025-03-11 18:29:17,057 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:152]
+2025-03-11 18:29:17,058 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:17] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:49,578 INFO: Task add route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:64]
+2025-03-11 18:29:49,580 DEBUG: User ID from session: 1 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:66]
+2025-03-11 18:29:49,662 DEBUG: Uploaded image path: /static/uploads/153a07d6-0575-458b-839c-2eddb9fc23d1_600_400_fff.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:96]
+2025-03-11 18:29:49,663 DEBUG: Task: task, Priority: 3, Due date: 2025-03-31, Tags: tag, Image: /static/uploads/153a07d6-0575-458b-839c-2eddb9fc23d1_600_400_fff.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:98]
+2025-03-11 18:29:49,691 INFO: Task added at Tokyo time: 2025-03-11T18:29:49.664441+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:121]
+2025-03-11 18:29:49,695 DEBUG: Todo priority: 3 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-11 18:29:49,696 DEBUG: Todo due_date: 2025-03-31 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-11 18:29:49,697 DEBUG: Todo tags: tag [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-11 18:29:49,698 DEBUG: Todo image_path: /static/uploads/153a07d6-0575-458b-839c-2eddb9fc23d1_600_400_fff.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-11 18:29:49,699 DEBUG: Generated response: {'id': 2, 'task': 'task', 'created_at': '2025-03-11T18:29:49.664441+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'tag', 'image_path': '/static/uploads/153a07d6-0575-458b-839c-2eddb9fc23d1_600_400_fff.png'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-11 18:29:49,700 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:49] "[35m[1mPOST /todos HTTP/1.1[0m" 201 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:49,803 INFO: Task retrieval route called. [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:131]
+2025-03-11 18:29:49,807 DEBUG: Search query:  [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:145]
+2025-03-11 18:29:49,809 DEBUG: Processing todo: <Todo 1> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:147]
+2025-03-11 18:29:49,810 DEBUG: Processing todo: <Todo 2> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:147]
+2025-03-11 18:29:49,811 DEBUG: Todo priority: 1 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-11 18:29:49,812 DEBUG: Todo due_date: 2025-03-01 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-11 18:29:49,813 DEBUG: Todo tags: a [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-11 18:29:49,814 DEBUG: Todo image_path: /static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-11 18:29:49,816 DEBUG: Generated response: {'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-11 18:29:49,818 DEBUG: Todo priority: 3 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:36]
+2025-03-11 18:29:49,818 DEBUG: Todo due_date: 2025-03-31 [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:37]
+2025-03-11 18:29:49,819 DEBUG: Todo tags: tag [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:38]
+2025-03-11 18:29:49,820 DEBUG: Todo image_path: /static/uploads/153a07d6-0575-458b-839c-2eddb9fc23d1_600_400_fff.png [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:39]
+2025-03-11 18:29:49,820 DEBUG: Generated response: {'id': 2, 'task': 'task', 'created_at': '2025-03-11T18:29:49.664441+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'tag', 'image_path': '/static/uploads/153a07d6-0575-458b-839c-2eddb9fc23d1_600_400_fff.png'} [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:40]
+2025-03-11 18:29:49,821 DEBUG: Generated todos response: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'task', 'created_at': '2025-03-11T18:29:49.664441+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'tag', 'image_path': '/static/uploads/153a07d6-0575-458b-839c-2eddb9fc23d1_600_400_fff.png'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:150]
+2025-03-11 18:29:49,824 INFO: Tasks retrieved at Tokyo time: 2025-03-11T18:29:49.824008+09:00. Session: <SecureCookieSession {'logged_in': True, 'registered': True, 'user_id': 1}> [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:151]
+2025-03-11 18:29:49,825 INFO: Todos: [{'id': 1, 'task': 'test', 'created_at': '2025-03-02T01:13:28.087018+09:00', 'priority': 1, 'due_date': '2025-03-01', 'tags': 'a', 'image_path': '/static/uploads/9b626e9f-1d44-4155-876c-eb4a854407e7_Untitled.png'}, {'id': 2, 'task': 'task', 'created_at': '2025-03-11T18:29:49.664441+09:00', 'priority': 3, 'due_date': '2025-03-31', 'tags': 'tag', 'image_path': '/static/uploads/153a07d6-0575-458b-839c-2eddb9fc23d1_600_400_fff.png'}] [in C:\Users\x-ka-hayashi\Documents\flask_ecs_test\flask_ecs_test\app\routes\tasks.py:152]
+2025-03-11 18:29:49,827 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:49] "GET /todos HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]
+2025-03-11 18:29:50,063 INFO: 127.0.0.1 - - [11/Mar/2025 18:29:50] "GET /static/uploads/153a07d6-0575-458b-839c-2eddb9fc23d1_600_400_fff.png HTTP/1.1" 200 - [in C:\Users\x-ka-hayashi\AppData\Roaming\Python\Python313\site-packages\werkzeug\_internal.py:97]

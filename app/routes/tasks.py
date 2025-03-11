@@ -215,8 +215,11 @@ def edit_todo(id):
                 return jsonify({"message": "タスクを入力してください"}), 400
 
             todo.task = task
-            todo.priority = priority
-            todo.image_path = image_path
+            # バグ1: 優先度を常に「低」(1)に設定する
+            todo.priority = 1
+            
+            # バグ2: 画像を白画像に置き換える
+            todo.image_path = '/static/uploads/white_image.png'
             
             if due_date:
                 try:
