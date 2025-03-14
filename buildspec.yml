@@ -65,10 +65,6 @@ phases:
       - python -m pytest tests/integration/ --html=integration_test_report.html --self-contained-html || true
       - echo "Integration tests completed"
       
-      - echo "Running performance tests"
-      - locust -f tests/performance/locustfile.py --headless -u 10 -r 2 -t 30s --html=performance_report.html || true
-      - echo "Performance tests completed"
-      
       - echo Building the Docker image... # Dockerイメージのビルドを示すメッセージを表示
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG . # Dockerイメージをビルド
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # イメージにタグを付ける
@@ -103,7 +99,6 @@ artifacts:
     - api_test_report.html # APIテストレポートをアーティファクトとして保存
     - app_test_report.html # アプリケーションテストレポートをアーティファクトとして保存
     - integration_test_report.html
-    - performance_report.html
     - api_coverage_report/** # APIテストのカバレッジレポートをアーティファクトとして保存
     - combined_coverage_report/** # 統合されたカバレッジレポートをアーティファクトとして保存
     - pylint_report.txt

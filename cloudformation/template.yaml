@@ -1,0 +1,595 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  This template creates a CodePipeline pipeline with a source stage (Github), a build stage (CodeBuild), and a deploy stage (ECS).
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "AWS Configuration"
+        Parameters:
+          - AccountID
+          - Region
+      - Label:
+          default: "Repository Configuration"
+        Parameters:
+          - AppRepositoryName
+          - TestRepositoryName
+          - RepositoryBranch
+          - ConnectionArn
+      - Label:
+          default: "Storage Configuration"
+        Parameters:
+          - BuildArtifactBucketName
+          - PlaywrightReportsBucketName
+          - ECRRepositoryName
+      - Label:
+          default: "Build Configuration"
+        Parameters:
+          - BuildProjectName
+          - TestProjectName
+          - BuildImageName
+          - TestImageName
+          - ComputeType
+          - TimeoutMinutes
+      - Label:
+          default: "Deployment Configuration"
+        Parameters:
+          - ECSClusterName
+          - ECSServiceName
+          - PipelineName
+    ParameterLabels:
+      AccountID:
+        default: "AWS Account ID"
+      Region:
+        default: "AWS Region"
+      BuildArtifactBucketName:
+        default: "Build Artifact Bucket Name"
+      PlaywrightReportsBucketName:
+        default: "Playwright Reports Bucket Name"
+
+Parameters:
+  AccountID:
+    Type: String
+    Description: "AWS Account ID"
+  
+  Region:
+    Type: String
+    Default: 'ap-northeast-1'
+    Description: "AWS Region"
+  
+  BuildArtifactBucketName:
+    Type: String
+    Default: 'codepipeline-ap-northeast-1-artifacts-iac-v3'
+    Description: "Build artifactBucket"
+  
+  PlaywrightReportsBucketName:
+    Type: String
+    Default: 'playwright-reports-v1'
+    Description: "Playwright's test Reports"
+  
+  ECRRepositoryName:
+    Type: String
+    Default: 'flask_ecs_test'
+    Description: "Where to store Container(Docker) images"
+  
+  AppRepositoryName:
+    Type: String
+    Default: 'flask_ecs_test'
+    Description: "Application repository name"
+  
+  TestRepositoryName:
+    Type: String
+    Default: 'PlaywrightDemoTest'
+    Description: "Test repository name"
+  
+  RepositoryBranch:
+    Type: String
+    # Default: 'master'
+    Default: 'contains_bags'
+    Description: "Repository branch to use"
+  
+  ConnectionArn:
+    Type: String
+    Default: 'arn:aws:codeconnections:ap-northeast-1:761018867077:connection/3d2919d6-6060-4176-865f-cf1932600cbc'
+    Description: "CodeStar connection ARN for GitHub"
+  
+  ECSClusterName:
+    Type: String
+    Default: 'sample-ecs-cluster'
+    Description: "ECS cluster name"
+  
+  ECSServiceName:
+    Type: String
+    Default: 'test-service'
+    Description: "ECS service name"
+  
+  BuildProjectName:
+    Type: String
+    Default: 'cloudformation_sample'
+    Description: "Name for the build project"
+  
+  TestProjectName:
+    Type: String
+    Default: 'PlaywrightDemoTest'
+    Description: "Name for the test project"
+  
+  BuildImageName:
+    Type: String
+    Default: 'aws/codebuild/standard:7.0'
+    Description: "Docker image for build"
+  
+  TestImageName:
+    Type: String
+    Default: 'mcr.microsoft.com/playwright:v1.51.0-noble'
+    Description: "Docker image for test"
+  
+  ComputeType:
+    Type: String
+    Default: 'BUILD_GENERAL1_MEDIUM'
+    AllowedValues:
+      - 'BUILD_GENERAL1_SMALL'
+      - 'BUILD_GENERAL1_MEDIUM'
+      - 'BUILD_GENERAL1_LARGE'
+    Description: "CodeBuild compute type"
+  
+  PipelineName:
+    Type: String
+    Default: 'pipeline_sample'
+    Description: "Name for the CodePipeline"
+  
+  TimeoutMinutes:
+    Type: Number
+    Default: 45
+    MinValue: 5
+    MaxValue: 480
+    Description: "Timeout in minutes for build and test projects"
+
+# Tags define
+Mappings:
+  TagMap:
+    DefaultTags:
+      Project: "CI/CD Pipeline"
+      Environment: "Demo"
+      ManagedBy: "CloudFormation"
+
+Resources:
+  #-----------------------------------------------------------------------------
+  # Storage Resources
+  #-----------------------------------------------------------------------------
+  ArtifactBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Sub ${BuildArtifactBucketName}
+      VersioningConfiguration:
+        Status: Enabled
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-ArtifactBucket"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  
+  PlaywrightReportsBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Sub ${PlaywrightReportsBucketName}
+      LifecycleConfiguration:
+        Rules:
+          - Id: DeleteOldReports
+            Status: Enabled
+            ExpirationInDays: 30
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-PlaywrightReportsBucket"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+  
+  ECRRepository:
+    Type: 'AWS::ECR::Repository'
+    Properties:
+      RepositoryName: !Sub ${ECRRepositoryName}
+      LifecyclePolicy:
+        LifecyclePolicyText: |
+          {
+            "rules": [
+              {
+                "rulePriority": 1,
+                "description": "Keep only the last 10 images",
+                "selection": {
+                  "tagStatus": "any",
+                  "countType": "imageCountMoreThan",
+                  "countNumber": 10
+                },
+                "action": {
+                  "type": "expire"
+                }
+              }
+            ]
+          }
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-ECRRepository"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+
+  #-----------------------------------------------------------------------------
+  # IAM Resources
+  #-----------------------------------------------------------------------------
+  CodePipelineRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service:
+                - 'codepipeline.amazonaws.com'
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess'
+      Policies:
+        - PolicyName: 'CodePipelinePolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: 'Allow'
+                Action: 'iam:PassRole'
+                Resource: '*'
+              - Effect: 'Allow'
+                Action: 
+                  - 'codebuild:StartBuild'
+                  - 'codebuild:BatchGetBuilds'
+                  - 'codebuild:BatchGetBuildBatches'
+                  - 'codebuild:StartBuildBatch'
+                Resource: '*'
+              - Effect: 'Allow'
+                Action: 'codestar-connections:UseConnection'
+                Resource: !Ref ConnectionArn
+              - Effect: 'Allow'
+                Action: 
+                  - 'ecs:CreateService'
+                  - 'ecs:UpdateService'
+                  - 'ecs:DeleteService'
+                  - 'ecs:RegisterTaskDefinition'
+                  - 'ecs:DeregisterTaskDefinition'
+                  - 'ecs:DescribeServices'
+                  - 'ecs:DescribeTaskDefinition'
+                Resource: '*'
+              - Effect: 'Allow'
+                Action:
+                  - 's3:PutObject'
+                  - 's3:GetObject'
+                  - 's3:GetObjectVersion'
+                  - 's3:GetBucketVersioning'
+                Resource:
+                  - !Sub 'arn:aws:s3:::${BuildArtifactBucketName}/*'
+                  - !Sub 'arn:aws:s3:::${BuildArtifactBucketName}'
+              - Effect: 'Allow'
+                Action:
+                  - 's3:PutObject'
+                Resource:
+                  - !Sub 'arn:aws:s3:::${PlaywrightReportsBucketName}/*'
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-CodePipelineRole"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+
+  CodeBuildRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service:
+                - 'codebuild.amazonaws.com'
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess'
+      Policies:
+        - PolicyName: 'CodeBuildPolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: 'Allow'
+                Action:
+                  - 'logs:CreateLogGroup'
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                Resource:
+                  - !Sub 'arn:aws:logs:${Region}:${AccountID}:log-group:/aws/codebuild/${BuildProjectName}'
+                  - !Sub 'arn:aws:logs:${Region}:${AccountID}:log-group:/aws/codebuild/${BuildProjectName}:*'
+                  - !Sub 'arn:aws:logs:${Region}:${AccountID}:log-group:/aws/codebuild/${TestProjectName}'
+                  - !Sub 'arn:aws:logs:${Region}:${AccountID}:log-group:/aws/codebuild/${TestProjectName}:*'
+              - Effect: 'Allow'
+                Action:
+                  - 's3:PutObject'
+                  - 's3:GetObject'
+                  - 's3:GetObjectVersion'
+                  - 's3:GetBucketAcl'
+                  - 's3:GetBucketLocation'
+                  - 's3:ListBucket'
+                Resource:
+                  - !Sub 'arn:aws:s3:::${BuildArtifactBucketName}'
+                  - !Sub 'arn:aws:s3:::${BuildArtifactBucketName}/*'
+                  - !Sub 'arn:aws:s3:::${PlaywrightReportsBucketName}'
+                  - !Sub 'arn:aws:s3:::${PlaywrightReportsBucketName}/*'
+              - Effect: 'Allow'
+                Action:
+                  - 'codebuild:CreateReportGroup'
+                  - 'codebuild:CreateReport'
+                  - 'codebuild:UpdateReport'
+                  - 'codebuild:BatchPutTestCases'
+                  - 'codebuild:BatchPutCodeCoverages'
+                Resource:
+                  - !Sub 'arn:aws:codebuild:${Region}:${AccountID}:report-group/${BuildProjectName}-*'
+                  - !Sub 'arn:aws:codebuild:${Region}:${AccountID}:report-group/${TestProjectName}-*'
+              - Effect: 'Allow'
+                Action:
+                  - 'ecs:UpdateService'
+                  - 'ecs:RegisterTaskDefinition'
+                Resource: '*'
+              - Effect: 'Allow'
+                Action:
+                  - 'secretsmanager:GetSecretValue'
+                  - 'secretsmanager:DescribeSecret'
+                Resource: 
+                  - !Sub 'arn:aws:secretsmanager:${Region}:${AccountID}:secret:${AppRepositoryName}*'
+              - Effect: 'Allow'
+                Action:
+                  - 'codeconnections:GetConnectionToken'
+                  - 'codeconnections:GetConnection'
+                  - 'codeconnections:UseConnection'
+                Resource: !Ref ConnectionArn
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-CodeBuildRole"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+
+  #-----------------------------------------------------------------------------
+  # CodeBuild Projects
+  #-----------------------------------------------------------------------------
+  BuildProject:
+    Type: 'AWS::CodeBuild::Project'
+    Properties:
+      Name: !Ref BuildProjectName
+      Description: !Sub "Build project for ${AppRepositoryName}"
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: 'buildspec.yml'
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        ComputeType: !Ref ComputeType
+        Image: !Ref BuildImageName
+        Type: LINUX_CONTAINER
+        PrivilegedMode: true
+        EnvironmentVariables:
+          - Name: IMAGE_REPO_NAME
+            Value: !Ref ECRRepositoryName
+            Type: PLAINTEXT
+          - Name: AWS_DEFAULT_REGION
+            Value: !Ref Region
+            Type: PLAINTEXT
+          - Name: CONTAINER_NAME
+            Value: 'myapp'
+            Type: PLAINTEXT
+          - Name: AWS_ACCOUNT_ID
+            Value: !Ref AccountID
+            Type: PLAINTEXT
+          - Name: ECR_REPOSITORY_URI
+            Value: !Sub "${AccountID}.dkr.ecr.${Region}.amazonaws.com/${ECRRepositoryName}"
+            Type: PLAINTEXT
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Sub '/aws/codebuild/${BuildProjectName}'
+          StreamName: 'build-log-stream'
+      ServiceRole: !GetAtt CodeBuildRole.Arn
+      TimeoutInMinutes: !Ref TimeoutMinutes
+      Cache:
+        Type: LOCAL
+        Modes:
+          - LOCAL_DOCKER_LAYER_CACHE
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-BuildProject"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+  
+  TestProject:
+    Type: 'AWS::CodeBuild::Project'
+    Properties:
+      Name: !Ref TestProjectName
+      Description: !Sub "Playwright test project for ${AppRepositoryName}"
+      Source:
+        Type: GITHUB
+        Location: !Sub 'https://github.com/kazucch0925/${TestRepositoryName}.git'
+        BuildSpec: 'buildspec-test.yml'
+      Artifacts:
+        Type: NO_ARTIFACTS
+      Environment:
+        ComputeType: !Ref ComputeType
+        Image: !Ref TestImageName
+        Type: LINUX_CONTAINER
+        PrivilegedMode: true
+        EnvironmentVariables:
+          # TODO: Env for Playwright
+          - Name: AWS_DEFAULT_REGION
+            Value: !Ref Region
+            Type: PLAINTEXT
+          - Name: AWS_ACCOUNT_ID
+            Value: !Ref AccountID
+            Type: PLAINTEXT
+          - Name: REPORT_S3_BUCKET
+            Value: !Ref PlaywrightReportsBucketName
+            Type: PLAINTEXT
+          - Name: PLAYWRIGHT_BROWSERS_PATH
+            Value: '/ms-playwright'
+            Type: PLAINTEXT
+          - Name: TARGET_URL
+            Value: !Sub "https://todolist-sample.com"
+            Type: PLAINTEXT
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Sub '/aws/codebuild/${TestProjectName}'
+          StreamName: 'test-log-stream'
+      ServiceRole: !GetAtt CodeBuildRole.Arn
+      TimeoutInMinutes: !Ref TimeoutMinutes
+      Cache:
+        Type: LOCAL
+        Modes:
+          - LOCAL_CUSTOM_CACHE
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-TestProject"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+
+  #-----------------------------------------------------------------------------
+  # CodePipeline
+  #-----------------------------------------------------------------------------
+  Pipeline:
+    Type: 'AWS::CodePipeline::Pipeline'
+    Properties:
+      Name: !Ref PipelineName
+      RoleArn: !GetAtt CodePipelineRole.Arn
+      ArtifactStore:
+        Type: S3
+        Location: !Ref ArtifactBucket
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: SourceAction
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: CodeStarSourceConnection
+                Version: 1
+              OutputArtifacts:
+                - Name: SourceArtifact
+              Configuration:
+                ConnectionArn: !Ref ConnectionArn
+                FullRepositoryId: !Sub 'kazucch0925/${AppRepositoryName}'
+                BranchName: !Ref RepositoryBranch
+                DetectChanges: true
+              RunOrder: 1
+            - Name: TestSourceAction
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: CodeStarSourceConnection
+                Version: 1
+              OutputArtifacts:
+                - Name: TestSourceArtifact
+              Configuration:
+                ConnectionArn: !Ref ConnectionArn
+                FullRepositoryId: !Sub 'kazucch0925/${TestRepositoryName}'
+                BranchName: !Ref RepositoryBranch
+                DetectChanges: true
+              RunOrder: 1
+        - Name: Build
+          Actions:
+            - Name: BuildAction
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: 1
+              InputArtifacts:
+                - Name: SourceArtifact
+              OutputArtifacts:
+                - Name: BuildArtifact
+              Configuration:
+                ProjectName: !Ref BuildProject
+              RunOrder: 1
+        - Name: Deploy
+          Actions:
+            - Name: DeployAction
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: ECS
+                Version: 1
+              InputArtifacts:
+                - Name: BuildArtifact
+              Configuration:
+                ClusterName: !Ref ECSClusterName
+                ServiceName: !Ref ECSServiceName
+                FileName: 'imagedefinitions.json'
+              RunOrder: 1
+        - Name: Test
+          Actions:
+            - Name: TestAction
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: 1
+              InputArtifacts:
+                - Name: TestSourceArtifact
+              Configuration:
+                ProjectName: !Ref TestProject
+                PrimarySource: TestSourceArtifact
+              RunOrder: 1
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-Pipeline"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+
+Outputs:
+  PipelineName:
+    Description: "The name of the CodePipeline pipeline"
+    Value: !Ref Pipeline
+    Export:
+      Name: !Sub "${AWS::StackName}-PipelineName"
+  
+  ArtifactBucketName:
+    Description: "The name of the S3 bucket used to store pipeline artifacts"
+    Value: !Ref ArtifactBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-ArtifactBucketName"
+  
+  PlaywrightReportsBucketName:
+    Description: "The name of the S3 bucket used to store Playwright test reports"
+    Value: !Ref PlaywrightReportsBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-PlaywrightReportsBucketName"
+  
+  ECRRepositoryName:
+    Description: "The name of the ECR repository"
+    Value: !Ref ECRRepository
+    Export:
+      Name: !Sub "${AWS::StackName}-ECRRepositoryName"
+  
+  ECRRepositoryURI:
+    Description: "The URI of the ECR repository"
+    Value: !Sub "${AccountID}.dkr.ecr.${Region}.amazonaws.com/${ECRRepositoryName}"
+    Export:
+      Name: !Sub "${AWS::StackName}-ECRRepositoryURI"
