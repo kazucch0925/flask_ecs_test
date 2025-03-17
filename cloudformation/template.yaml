@@ -58,6 +58,17 @@ Parameters:
     Default: 'ap-northeast-1'
     Description: "AWS Region"
   
+  NotificationEmail:
+    Type: String
+    Default: 'your-email@example.com'
+    Description: "Email address to receive pipeline notifications"
+  
+  SlackWebhookUrl:
+    Type: String
+    Default: 'https://hooks.slack.com/services/TXXXXXXXX/BXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX'
+    Description: "Slack webhook URL for notifications"
+    NoEcho: true
+  
   BuildArtifactBucketName:
     Type: String
     Default: 'codepipeline-ap-northeast-1-artifacts-iac-v3'
@@ -83,11 +94,16 @@ Parameters:
     Default: 'PlaywrightDemoTest'
     Description: "Test repository name"
   
-  RepositoryBranch:
+  AppRepositoryBranch:
     Type: String
     # Default: 'master'
     Default: 'contains_bags'
-    Description: "Repository branch to use"
+    Description: "Repository branch of Application"
+
+  TestRepositoryBranch:
+    Type: String
+    Default: 'master'
+    Description: "Repository branch of Test code"
   
   ConnectionArn:
     Type: String
@@ -217,6 +233,145 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-ECRRepository"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+
+  #-----------------------------------------------------------------------------
+  # Notification Resources
+  #-----------------------------------------------------------------------------
+  PipelineNotificationTopic:
+    Type: 'AWS::SNS::Topic'
+    Properties:
+      DisplayName: !Sub "${AWS::StackName}-Pipeline-Notifications"
+      TopicName: !Sub "${AWS::StackName}-Pipeline-Notifications"
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-PipelineNotificationTopic"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+
+  EmailSubscription:
+    Type: 'AWS::SNS::Subscription'
+    Properties:
+      Protocol: email
+      TopicArn: !Ref PipelineNotificationTopic
+      Endpoint: !Ref NotificationEmail
+
+  SlackNotificationFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-slack-notification"
+      Handler: index.handler
+      Role: !GetAtt SlackNotificationRole.Arn
+      Runtime: nodejs18.x
+      Timeout: 30
+      Environment:
+        Variables:
+          SLACK_WEBHOOK_URL: !Ref SlackWebhookUrl
+      Code:
+        ZipFile: |
+          const https = require('https');
+          const url = require('url');
+
+          exports.handler = async (event) => {
+              console.log('Event:', JSON.stringify(event, null, 2));
+              
+              // SNSメッセージを解析
+              const message = event.Records[0].Sns.Message;
+              const subject = event.Records[0].Sns.Subject || 'CI/CD Pipeline Notification';
+              
+              let color = '#36a64f'; // デフォルトは緑色
+              if (message.includes('FAILED') || message.includes('失敗')) {
+                  color = '#ff0000'; // 失敗は赤色
+              } else if (message.includes('STARTED') || message.includes('開始')) {
+                  color = '#ffcc00'; // 開始は黄色
+              }
+              
+              // Slackメッセージを構築
+              const slackMessage = {
+                  attachments: [{
+                      color: color,
+                      title: subject,
+                      text: message,
+                      footer: 'AWS CodePipeline Notification',
+                      ts: Math.floor(Date.now() / 1000)
+                  }]
+              };
+              
+              // Slackに送信
+              const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+              const options = url.parse(webhookUrl);
+              options.method = 'POST';
+              options.headers = {
+                  'Content-Type': 'application/json'
+              };
+              
+              return new Promise((resolve, reject) => {
+                  const req = https.request(options, (res) => {
+                      let responseBody = '';
+                      res.on('data', (chunk) => {
+                          responseBody += chunk;
+                      });
+                      res.on('end', () => {
+                          resolve({
+                              statusCode: res.statusCode,
+                              body: responseBody
+                          });
+                      });
+                  });
+                  
+                  req.on('error', (err) => {
+                      console.error('Error sending to Slack:', err);
+                      reject(err);
+                  });
+                  
+                  req.write(JSON.stringify(slackMessage));
+                  req.end();
+              });
+          };
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-SlackNotificationFunction"
+        - Key: Project
+          Value: !FindInMap [TagMap, DefaultTags, Project]
+        - Key: Environment
+          Value: !FindInMap [TagMap, DefaultTags, Environment]
+
+  SlackSubscription:
+    Type: 'AWS::SNS::Subscription'
+    Properties:
+      Protocol: lambda
+      TopicArn: !Ref PipelineNotificationTopic
+      Endpoint: !GetAtt SlackNotificationFunction.Arn
+
+  LambdaPermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !Ref SlackNotificationFunction
+      Principal: 'sns.amazonaws.com'
+      SourceArn: !Ref PipelineNotificationTopic
+
+  SlackNotificationRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service:
+                - 'lambda.amazonaws.com'
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-SlackNotificationRole"
         - Key: Project
           Value: !FindInMap [TagMap, DefaultTags, Project]
         - Key: Environment
@@ -494,7 +649,7 @@ Resources:
               Configuration:
                 ConnectionArn: !Ref ConnectionArn
                 FullRepositoryId: !Sub 'kazucch0925/${AppRepositoryName}'
-                BranchName: !Ref RepositoryBranch
+                BranchName: !Ref AppRepositoryBranch
                 DetectChanges: true
               RunOrder: 1
             - Name: TestSourceAction
@@ -508,7 +663,7 @@ Resources:
               Configuration:
                 ConnectionArn: !Ref ConnectionArn
                 FullRepositoryId: !Sub 'kazucch0925/${TestRepositoryName}'
-                BranchName: !Ref RepositoryBranch
+                BranchName: !Ref TestRepositoryBranch
                 DetectChanges: true
               RunOrder: 1
         - Name: Build
@@ -563,12 +718,67 @@ Resources:
         - Key: Environment
           Value: !FindInMap [TagMap, DefaultTags, Environment]
 
+  #-----------------------------------------------------------------------------
+  # Notification Rules
+  #-----------------------------------------------------------------------------
+  CodePipelineNotificationRule:
+    Type: 'AWS::CodeStarNotifications::NotificationRule'
+    Properties:
+      Name: !Sub "${AWS::StackName}-pipeline-notifications"
+      DetailType: FULL
+      EventTypeIds:
+        - codepipeline-pipeline-pipeline-execution-failed
+        - codepipeline-pipeline-pipeline-execution-succeeded
+        - codepipeline-pipeline-pipeline-execution-started
+        - codepipeline-pipeline-stage-execution-failed
+        - codepipeline-pipeline-stage-execution-succeeded
+        - codepipeline-pipeline-action-execution-failed
+        - codepipeline-pipeline-action-execution-succeeded
+      Resource: !Sub "arn:aws:codepipeline:${Region}:${AccountID}:${Pipeline}"
+      Targets:
+        - TargetType: SNS
+          TargetAddress: !Ref PipelineNotificationTopic
+
+  BuildProjectNotificationRule:
+    Type: 'AWS::CodeStarNotifications::NotificationRule'
+    Properties:
+      Name: !Sub "${AWS::StackName}-build-notifications"
+      DetailType: FULL
+      EventTypeIds:
+        - codebuild-project-build-state-failed
+        - codebuild-project-build-state-succeeded
+        - codebuild-project-build-state-in-progress
+      Resource: !Sub "arn:aws:codebuild:${Region}:${AccountID}:project/${BuildProjectName}"
+      Targets:
+        - TargetType: SNS
+          TargetAddress: !Ref PipelineNotificationTopic
+
+  TestProjectNotificationRule:
+    Type: 'AWS::CodeStarNotifications::NotificationRule'
+    Properties:
+      Name: !Sub "${AWS::StackName}-test-notifications"
+      DetailType: FULL
+      EventTypeIds:
+        - codebuild-project-build-state-failed
+        - codebuild-project-build-state-succeeded
+        - codebuild-project-build-state-in-progress
+      Resource: !Sub "arn:aws:codebuild:${Region}:${AccountID}:project/${TestProjectName}"
+      Targets:
+        - TargetType: SNS
+          TargetAddress: !Ref PipelineNotificationTopic
+
 Outputs:
   PipelineName:
     Description: "The name of the CodePipeline pipeline"
     Value: !Ref Pipeline
     Export:
       Name: !Sub "${AWS::StackName}-PipelineName"
+  
+  NotificationTopicArn:
+    Description: "The ARN of the SNS topic used for notifications"
+    Value: !Ref PipelineNotificationTopic
+    Export:
+      Name: !Sub "${AWS::StackName}-NotificationTopicArn"
   
   ArtifactBucketName:
     Description: "The name of the S3 bucket used to store pipeline artifacts"
