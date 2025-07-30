@@ -97,7 +97,7 @@ Parameters:
   AppRepositoryBranch:
     Type: String
     # Default: 'master'
-    Default: 'contains_bags'
+    Default: 'contains_bugs'
     Description: "Repository branch of Application"
 
   TestRepositoryBranch:
@@ -580,7 +580,7 @@ Resources:
       Source:
         Type: GITHUB
         Location: !Sub 'https://github.com/kazucch0925/${TestRepositoryName}.git'
-        BuildSpec: 'buildspec-test.yml'
+        BuildSpec: 'buildspec.yml'
       Artifacts:
         Type: NO_ARTIFACTS
       Environment:
@@ -748,7 +748,7 @@ Resources:
         - codebuild-project-build-state-failed
         - codebuild-project-build-state-succeeded
         - codebuild-project-build-state-in-progress
-      Resource: !Sub "arn:aws:codebuild:${Region}:${AccountID}:project/${BuildProjectName}"
+      Resource: !Sub "arn:aws:codebuild:${Region}:${AccountID}:project/${BuildProject}"
       Targets:
         - TargetType: SNS
           TargetAddress: !Ref PipelineNotificationTopic

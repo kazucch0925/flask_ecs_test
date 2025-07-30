@@ -121,9 +121,6 @@ paths:
               schema:
                 type: string
                 description: タスク編集画面のHTML
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Todo'
         '401':
           description: 認証エラー
           content:
@@ -151,6 +148,49 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TodoInput'
+      responses:
+        '200':
+          description: タスク更新成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        '400':
+          description: 不正なリクエスト
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: タスクが見つからない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: タスクの更新（フォーム送信用）
+      description: 指定されたIDのタスクを更新します（フォーム送信用）
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: タスクのID
+      requestBody:
+        content:
           multipart/form-data:
             schema:
               type: object

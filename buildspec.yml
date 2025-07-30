@@ -7,104 +7,34 @@ env:
 
 phases:
   install:
-    runtime-versions:
-      python: 3.10
-      java: corretto11 # Javaインストール
     commands:
-      - echo "Installing system dependencies" # システムの依存関係をインストールすることを示すメッセージを表示
-      - npm install -g @openapitools/openapi-generator-cli # OpenAPI Generator CLIをグローバルにインストール
-      - pip install --user pytest pytest-html coverage # pytest, pytest-html, coverageをユーザーのホームディレクトリにインストール
-      - pip install --user flake8 pylint bandit safety locust coverage-badge jinja2 pytest-flask selenium webdriver-manager
-      - echo "Installing Trivy..." # Trivyのインストール
-      - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.48.3 || true
-      - export PATH=$PATH:$HOME/.local/bin # ユーザーのローカルバイナリディレクトリをPATHに追加
-      - export PATH=$PATH:$(npm bin -g) # グローバルにインストールされたnpmパッケージの実行パスをPATHに追加
+      - echo "Setup complete"
 
   pre_build:
     commands:
-      - echo "Setting up openapi-generator-cli in PATH" # OpenAPI Generator CLIのパス設定を示すメッセージを表示
-      - export PATH=$PATH:$(npm bin -g) # グローバルにインストールされたnpmパッケージの実行パスを再度PATHに追加
-      - echo "Running static code analysis" # 静的コード解析を開始することを示すメッセージを表示
-      - flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=generated || true
-      - pylint --disable=all --enable=unused-import,unused-variable,unused-argument app/ > pylint_report.txt || true
-      - echo "Static analysis completed"
-      - echo "Running security scans"
-      - safety check -r requirements.txt --json > safety_report.json || true
-      - bandit -r . -f html -o bandit_report.html --exclude ./generated || true
-      - echo "Security scan completed"
-      - echo Logging in to Amazon ECR... # Amazon ECRへのログインを示すメッセージを表示
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com # Amazon ECRにログイン
-      - echo Logging in to Docker Hub... # Docker Hubへのログインを示すメッセージを表示
-      - echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin # Docker Hubにログイン
-      - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION # コードのバージョンをIMAGE_TAGに設定
-      - openapi-generator-cli version # OpenAPI Generator CLIのバージョンを確認
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - echo Logging in to Docker Hub...
+      - echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin
+      - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
 
   build:
     commands:
-      - echo Build started on `date` # ビルドの開始を示すメッセージを表示
-      - echo Generating code from OpenAPI spec # OpenAPIスキーマからコードを生成することを示すメッセージを表示
-      - export PATH=$PATH:$(npm bin -g) # 再度、グローバルにインストールされたnpmパッケージの実行パスをPATHに追加
-      - openapi-generator-cli generate -i openapi.yaml -g python -o ./generated # OpenAPIスキーマからPythonコードを生成
-      - echo Installing project dependencies # プロジェクトの依存関係をインストールすることを示すメッセージを表示
-      - pip install -r ./generated/requirements.txt # 生成されたコードの依存関係をインストール
-      - pip install -r ./generated/test-requirements.txt # テストに必要な依存関係をインストール
-      - echo Installing application dependencies # アプリケーションの依存関係をインストールすることを示すメッセージを表示
-      - pip install -r requirements.txt # アプリケーションの依存関係をインストール
-      
-      - echo Running API tests # APIテストの実行を示すメッセージを表示
-      - coverage run -m pytest ./generated --html=api_test_report.html --self-contained-html || true # カバレッジを計測しつつAPIテストを実行し、HTML形式のレポートを生成
-      - coverage report -m || true # カバレッジレポートをコンソールに表示
-      - coverage html -d api_coverage_report # APIテストのカバレッジレポートをHTML形式で出力
-      
-      - echo Running application unit tests # アプリケーションユニットテストの実行を示すメッセージを表示
-      - coverage run --append -m pytest tests/ --html=app_test_report.html --self-contained-html || true # カバレッジを計測しつつアプリケーションテストを実行し、HTML形式のレポートを生成（--appendで前回の結果に追加）
-      - coverage report -m || true # カバレッジレポートをコンソールに表示
-      - coverage html -d combined_coverage_report # 統合されたカバレッジレポートをHTML形式で出力
-      
-      - echo "Running integration tests"
-      - python -m pytest tests/integration/ --html=integration_test_report.html --self-contained-html || true
-      - echo "Integration tests completed"
-      
-      - echo Building the Docker image... # Dockerイメージのビルドを示すメッセージを表示
-      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG . # Dockerイメージをビルド
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # イメージにタグを付ける
-      
-      - echo "Scanning Docker image for vulnerabilities"
-      - trivy image $IMAGE_REPO_NAME:$IMAGE_TAG --format json > trivy_report.json || true
-      - echo "Docker image scan completed"
+      - echo Build started on `date`
+      - echo Installing application dependencies
+      - pip install -r requirements.txt
+      - echo Building the Docker image...
+      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
 
   post_build:
     commands:
-      - echo Build completed on `date` # ビルドの完了を示すメッセージを表示
-      - echo "Generating enhanced coverage reports"
-      - coverage-badge -o coverage_badge.svg || true
-      - echo "Coverage badge generated"
-      - echo "Generating quality dashboard"
-      - python tests/dashboard/generate_dashboard.py || true
-      - echo "Quality dashboard generated"
-      - echo Pushing the Docker image... # Dockerイメージのプッシュを示すメッセージを表示
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG # Amazon ECRにDockerイメージをプッシュ
-      - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json # イメージ定義をJSONファイルに出力
-
-reports:
-  flask_ecs_test-coverage-reports:
-    files:
-      - combined_coverage_report/index.html
-    file-format: HTMLCOV
-    base-directory: .
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
 
 artifacts:
   files:
-    - imagedefinitions.json # 出力されたイメージ定義JSONファイルをアーティファクトとして保存
-    - api_test_report.html # APIテストレポートをアーティファクトとして保存
-    - app_test_report.html # アプリケーションテストレポートをアーティファクトとして保存
-    - integration_test_report.html
-    - api_coverage_report/** # APIテストのカバレッジレポートをアーティファクトとして保存
-    - combined_coverage_report/** # 統合されたカバレッジレポートをアーティファクトとして保存
-    - pylint_report.txt
-    - safety_report.json
-    - bandit_report.html
-    - trivy_report.json
-    - coverage_badge.svg
-    - quality_dashboard.html
-  discard-paths: yes # パスを破棄してルートに保存
+    - imagedefinitions.json
+  discard-paths: yes
